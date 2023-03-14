@@ -14,6 +14,7 @@ export class RegisterService {
    * @return       {*}
    */
   IsExitUsername(username: string) {
+    console.log('IsExitUsername');
     return this.http.getUser('/isExitUsername', username);
   }
 

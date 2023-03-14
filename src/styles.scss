@@ -23,8 +23,8 @@ input {
 }
 
 /* 表单中错误提示样式*/
-.errorTips{
-    padding-bottom: 0.5rem ;
+.errorTips {
+    padding-bottom: 0.5rem;
     color: red;
     padding-left: 1rem;
 }
@@ -74,4 +74,10 @@ $button-grey: #E6E6E6;
         width: 150px;
         margin: 0 auto;
     }
+}
+
+@mixin customize-flex($jc: center, $al: center) {
+    display: flex;
+    justify-content: $jc;
+    align-items: $al;
 }

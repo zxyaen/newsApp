@@ -1,0 +1,58 @@
+@import '/src//styles.scss';
+.header {
+    width: 250px;
+    padding: 2rem;
+
+    .icon {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+
+        img {
+            width: 30px;
+            height: auto;
+        }
+
+        &:hover {
+            background-color: #EDF5FD;
+            cursor: pointer;
+        }
+    }
+
+    .list {
+        padding-top: 1rem;
+
+        .item {
+            margin: 0.5rem 0;
+            height: 3.5rem;
+
+            * {
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
+
+.rounded-button {
+    width: 9rem;
+    padding: 0.5rem;
+    border-radius: 24px;
+    transition: all 0.3s ease;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $button-grey;
+    }
+
+    span {
+
+        &:first-child {
+            margin-right: 0.4rem;
+        }
+
+    }
+}

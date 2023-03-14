@@ -1,0 +1,15 @@
+<div class="header">
+    <div class="icon">
+        <a routerLink="/home">
+            <img src="../../../assets/logo.jpeg" alt="">
+        </a>
+    </div>
+    <ul class="list">
+        <li *ngFor="let item of list" class="item">
+            <div class="rounded-button">
+                <span nz-icon [nzType]="item.icon" nzTheme="outline"></span>
+                <span>{{item.title}}</span>
+            </div>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,54 @@
+@import '/src/styles.scss';
+
+@media (min-width: 1200px) {
+
+    /* 在此处添加样式，这些样式将在最大宽度为1200像素时应用 */
+    .wrap {
+        // background-color: pink;
+        width: 1200px;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+}
+
+.wrap {
+    display: flex;
+    height: 100%;
+
+    .main-box {
+        display: flex;
+        height: 100%;
+
+        .main {
+            display: flex;
+            width: 950px;
+            height: 100%;
+
+            .content {
+                // background-color: antiquewhite;
+                border-left: 1px solid $line-grey;
+                border-right: 1px solid $line-grey;
+                width: 600px;
+                padding: 2rem 0;
+                .main-top{
+                    height: 50px;
+                    padding: 0 2rem;
+                }
+                .main-content{
+                    padding-top: 1.5rem;
+                }
+                .new-things-content{
+                    // padding-top: 1rem;
+                    height: 100%;
+                    background-color: aquamarine;
+                    overflow: scroll;
+                }
+            }
+
+            .right {
+                width: 350px;
+            }
+        }
+
+    }
+}

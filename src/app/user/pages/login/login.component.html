@@ -11,10 +11,10 @@
                 <div class="input-container">
                     <div class="input-text">
                         <div [ngClass]="form.get('account')?.value || modifyTheStyle.account?'has-value':'no-value' ">
-                            账户
+                            账户名或地址
                         </div>
                         <div *ngIf="form.get('account')?.value ||modifyTheStyle.account">
-                            {{form.get('account')?.value?.length}}/30
+                            {{form.get('account')?.value?.length}}/50
                         </div>
                         <div class="loading">
                             <span nz-icon [nzType]="'loading'" *ngIf="form.get('account')?.status==='PENDING'"></span>
@@ -26,10 +26,10 @@
                 </div>
                 <div *ngIf="form.get('account')?.errors && form.get('account')?.touched || form.get('account')?.dirty">
                     <div *ngIf="form.get('account')?.errors?.['required']" class="errorTips">
-                        账户不可以为空
+                        账户或地址不可以为空
                     </div>
                     <div  *ngIf="form.get('account')?.errors?.['maxlength']" class="errorTips">
-                        最大长度为30
+                        最大长度为50
                     </div>
                     <!-- <div *ngIf="form.get('account')?.hasError('IsExitUsername')" class="errorTips">
                             用户名已存在
