@@ -1,0 +1,33 @@
+@mixin input-wrap($width: 30rem) {
+    width: $width;
+    height: 3.4rem;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    background-color: #F0F3F4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 2rem;
+
+    .input-text {
+        font-size: 1.4rem;
+        margin-left: 1rem;
+    }
+
+    .input {
+        width: 70%;
+        height: inherit;
+        line-height: inherit;
+        font-size: 1.4rem;
+        border: none;
+        outline: none;
+        background-color: #F0F3F4;
+    }
+}
+
+.input-container {
+    @include input-wrap($width: 30rem)
+}

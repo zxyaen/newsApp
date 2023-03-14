@@ -1,0 +1,67 @@
+<div class="wrap">
+    <div class="main-box">
+        <div class="top">
+            <span nz-icon nzType="close" nzTheme="outline" [routerLink]="['/home']"></span>
+            <div class="title">登陆</div>
+        </div>
+        <!-- <div class="content"> -->
+        <!-- <div class="title">登陆</div> -->
+        <form [formGroup]="form" (submit)="onSubmit()" class="content">
+            <div class="input-wrap">
+                <div class="input-container">
+                    <div class="input-text">
+                        <div [ngClass]="form.get('account')?.value || modifyTheStyle.account?'has-value':'no-value' ">
+                            账户
+                        </div>
+                        <div *ngIf="form.get('account')?.value ||modifyTheStyle.account">
+                            {{form.get('account')?.value?.length}}/30
+                        </div>
+                        <div class="loading">
+                            <span nz-icon [nzType]="'loading'" *ngIf="form.get('account')?.status==='PENDING'"></span>
+                        </div>
+                    </div>
+                    <input class="input" type="text" name="name" required formControlName="account"
+                        [ngClass]="{'input-error':form.get('account')?.errors&&form.get('account')?.touched}"
+                        (focus)="modifyTheStyle.account=true" (blur)="modifyTheStyle.account=false">
+                </div>
+                <div *ngIf="form.get('account')?.errors && form.get('account')?.touched || form.get('account')?.dirty">
+                    <div *ngIf="form.get('account')?.errors?.['required']" class="errorTips">
+                        账户不可以为空
+                    </div>
+                    <div  *ngIf="form.get('account')?.errors?.['maxlength']" class="errorTips">
+                        最大长度为30
+                    </div>
+                    <!-- <div *ngIf="form.get('account')?.hasError('IsExitUsername')" class="errorTips">
+                            用户名已存在
+                        </div> -->
+                </div>
+            </div>
+            <div class="input-wrap">
+                <div class="input-container">
+                    <div class="input-text">
+                        <div [ngClass]="form.get('password')?.value || modifyTheStyle.password?'has-value':'no-value'">
+                            密码
+                        </div>
+                        <div *ngIf="form.get('password')?.value ||modifyTheStyle.password">
+                            {{form.get('password')?.value?.length}}/50
+                        </div>
+                    </div>
+                    <input class="input" type="password" name="password" formControlName="password"
+                        [ngClass]="{'input-error':form.get('password')?.errors&&form.get('password')?.touched}"
+                        (focus)="modifyTheStyle.password=true" (blur)="modifyTheStyle.password=false">
+                </div>
+                <div
+                    *ngIf="form.get('password')?.errors && form.get('password')?.touched || form.get('password')?.dirty">
+                    <div *ngIf="form.get('password')?.errors?.['required']" class="errorTips">
+                        密码不可以为空
+                    </div>
+                </div>
+            </div>
+            <div class="register-button-container">
+                <button type="submit" class="button">登陆</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+<!-- </div>/ -->

@@ -1,1 +1,77 @@
-/* You can add global styles to this file, and also import other style files */
+/* 设置全局默认样式*/
+body {
+    font-size: 12px;
+}
+
+p,
+div {
+    padding: 0;
+    margin: 0;
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+input {
+    // outline: none;
+    // all: unset;
+}
+
+/* 表单中错误提示样式*/
+.errorTips{
+    padding-bottom: 0.5rem ;
+    color: red;
+    padding-left: 1rem;
+}
+
+/*自定义颜色*/
+$line-grey: #F0F3F4;
+$button-grey: #E6E6E6;
+
+/* 圆角灰色边框样式*/
+@mixin br($roundedPixels: 20px) {
+    padding: 0.5rem;
+    border: 1px solid $line-grey;
+    border-radius: $roundedPixels;
+    -webkit-border-radius: $roundedPixels;
+    -moz-border-radius: $roundedPixels;
+    -ms-border-radius: $roundedPixels;
+    -o-border-radius: $roundedPixels;
+}
+
+// @media (min-width: 1200px) {
+
+//     /* 在此处添加样式，这些样式将在最大宽度为1200像素时应用 */
+//     body {
+//         // background-color: pink;
+//         width: 1200px;
+//         margin: 0 auto;
+//         overflow: hidden;
+//     }
+// }
+
+@media (min-width: 150px) and (max-width: 1200px) {
+
+    /* 在此处添加样式，这些样式将在宽度介于150像素和1200像素之间时应用 */
+    body {
+        width: auto;
+        background-color: red;
+        padding: 0 2rem;
+    }
+}
+
+
+@media (max-width: 150px) {
+
+    /* 在此处添加样式，这些样式将在最小宽度为150像素时应用 */
+    body {
+        background-color: pink;
+        width: 150px;
+        margin: 0 auto;
+    }
+}
