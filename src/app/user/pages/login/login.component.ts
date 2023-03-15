@@ -69,7 +69,7 @@ export class LoginComponent {
     try {
       //发送登陆请求，获取返回值
       res = await this.login(data)
-      console.log(res);
+      console.log(res)
       if (res.status === 200) {
         this.router.navigateByUrl('/user/home')
       }

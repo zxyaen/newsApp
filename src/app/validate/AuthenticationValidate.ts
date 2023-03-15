@@ -7,7 +7,7 @@ export class AuthenticationValidate {
   static isExitUsername(registerService: RegisterService): AsyncValidatorFn {
     return (control: AbstractControl): Observable<ValidationErrors | null> => {
       const value = control.value;
-      debounceTime(1500)
+      debounceTime(30000)
       return registerService.IsExitUsername(value).pipe(
         map(res => {
           if (res.data.isExit) {

@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
 
 
 
-  storage: any;
+  // storage: any;
 
 
   constructor(private registerHttp: RegisterService, private fb: FormBuilder) {
@@ -44,8 +44,7 @@ export class RegisterComponent implements OnInit {
 
   register(data: JSON) {
     this.registerHttp.Register(data).subscribe(res => {
-      this.storage = res
-      console.log(this.storage);
+      console.log(res);
     })
   }
 
@@ -70,20 +69,8 @@ export class RegisterComponent implements OnInit {
 
     console.log(this.form.value);
     // 处理要发送的内容
-    const { username, password } = this.form.value
     const data = JSON.stringify(this.form.value)
-    // JSON.stringify({
-    //   username,
-    //   password
-    // })
     this.register(JSON.parse(data))
-
-
-
-  }
-
-  show() {
-    console.log(this.storage?.data);
   }
 
 }
