@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { HomeContentComponent } from './home-content/home-content.component';
 import { RouterModule } from '@angular/router';
@@ -22,6 +22,7 @@ import { JsonToObjectPipe } from '../pipe/json-to-object.pipe';
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
     ReactiveFormsModule,
     NzIconModule,
     NzAvatarModule,
@@ -31,6 +32,7 @@ import { JsonToObjectPipe } from '../pipe/json-to-object.pipe';
     SearchComponent,
     HeaderComponent,
     LayoutComponent,
+    FormsModule,
     ReactiveFormsModule,
     NzIconModule,
     NzAvatarModule,

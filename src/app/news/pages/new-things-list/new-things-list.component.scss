@@ -1,0 +1,135 @@
+@import '/src/styles.scss';
+
+.item-wrap {
+    border-bottom: 1px solid $line-grey;
+    padding: 1rem 0;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #F7F7F7;
+    }
+}
+
+.forwarded {
+    margin-bottom: 0.5rem;
+    padding-left: 4.3rem
+}
+
+.item-container {
+    @include customize-flex(none, none);
+
+    .avatar {
+        margin: 0 1rem;
+
+        .avatar-img {
+            width: 2.4rem;
+            height: 2.4rem;
+            border-radius: 50%;
+        }
+    }
+
+    .content {
+        width: 100%;
+
+        .top {
+            @include customize-flex(space-between);
+            width: inherit;
+            padding-right: 2rem;
+
+            .userName {
+                font-size: 0.9rem;
+                font-weight: bold;
+                margin-right: 0.5rem;
+            }
+
+            .date {
+                font-size: 0.9rem;
+                margin-left: 0.5rem;
+            }
+
+            .more {
+                font-weight: bold;
+                font-size: 1rem;
+            }
+        }
+
+        .newThings {
+            font-size: 1rem;
+            padding-right: 4rem;
+        }
+
+        .newThings-img-container {
+            width: 24rem;
+            height: 24rem;
+
+            .newThings-img {
+                width: 90%;
+                height: 90%;
+                margin-top: 1rem;
+                border-radius: 1rem;
+            }
+        }
+
+        .ribbon {
+            @include customize-flex(space-between);
+            margin-top: 0.5rem;
+
+            .ribbon-wrap {
+                @include customize-flex();
+                margin-right: 2rem;
+
+                &:hover {
+                    .blue {
+                        color: #4A99E9;
+                        background-color: #E6EEF6;
+                    }
+
+                    .blue+span {
+                        color: #4A99E9;
+                    }
+
+                    .green {
+                        color: #53B781;
+                        background-color: #E6F1EB;
+                    }
+
+                    .green+span {
+                        color: #53B781
+                    }
+
+                    .red {
+                        color: #E5397F;
+                        background-color: #F5E4EB;
+                    }
+
+                    .red+span {
+                        color: #E5397F;
+                    }
+
+                }
+            }
+
+            .icon-wrap {
+                @include customize-flex();
+                width: 2rem;
+                height: 2rem;
+                border-radius: 50%;
+                margin-right: 0.5rem;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #d6d6d6;
+                }
+
+                .ribbon-icon {
+
+                    font-size: 1rem;
+
+                }
+            }
+
+        }
+
+
+    }
+}

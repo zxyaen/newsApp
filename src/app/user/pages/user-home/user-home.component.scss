@@ -7,11 +7,13 @@
     font-weight: bold;
     padding: 0 1rem;
 }
-.main-content{
+
+.main-content {
     margin-top: 0.8rem;
 }
+
 .title *,
-.main-content *{
+.main-content * {
     // background-color:opacify($color: white, $amount: 0)
 }
 
@@ -54,198 +56,11 @@
 
     .content {
         width: 90%;
-
-        .new-things {
-            width: 100%;
-            height: 7rem;
-
-            input {
-                box-sizing: border-box;
-                padding-top: 0;
-                border: none;
-                border-bottom: 1px solid $line-grey;
-                outline: none;
-                font-size: 1.5rem;
-                width: inherit;
-                height: inherit;
-            }
-        }
-
-        .ribbon {
-            padding: 1rem 2rem 1rem 0.5rem;
-            @include customize-flex(space-between);
-
-            .icon-wrap {
-                li {
-                    cursor: pointer;
-                    font-size: 1.2rem;
-                    color: #428AD2;
-                    margin-right: 1rem;
-                }
-            }
-
-            .button {
-                width: 4rem;
-                padding: 0.5rem;
-                border-radius: 24px;
-                border: none;
-                font-size: 1rem;
-                font-weight: bold;
-                color: white;
-                background-color: #4A99E9;
-                transition: all 0.3s ease;
-
-                &:hover {
-                    cursor: pointer;
-                    background-color: #428AD2;
-                }
-
-                &:disabled {
-                    cursor: auto;
-                    background-color: #A4CCF4;
-                }
-            }
-        }
     }
 }
 
 .new-things-list {
     height: calc(100vh - 300px - 3.5rem);
-
-    .item-wrap {
-        border-bottom: 1px solid $line-grey;
-        padding: 1rem 0;
-        cursor: pointer;
-
-        &:hover {
-            background-color: #F7F7F7;
-        }
-    }
-
-    .forwarded {
-        margin-bottom: 0.5rem;
-        padding-left: 4.3rem
-    }
-
-    .item-container {
-        @include customize-flex(none, none);
-
-        .avatar {
-            margin: 0 1rem;
-
-            .avatar-img {
-                width: 2.4rem;
-                height: 2.4rem;
-                border-radius: 50%;
-            }
-        }
-
-        .content {
-            width: 100%;
-
-            .top {
-                @include customize-flex(space-between);
-                width: inherit;
-                padding-right: 2rem;
-
-                .userName {
-                    font-size: 0.9rem;
-                    font-weight: bold;
-                    margin-right: 0.5rem;
-                }
-
-                .date {
-                    font-size: 0.9rem;
-                    margin-left: 0.5rem;
-                }
-
-                .more {
-                    font-weight: bold;
-                    font-size: 1rem;
-                }
-            }
-
-            .newThings {
-                font-size: 1rem
-            }
-
-            .newThings-img-container {
-                width: 24rem;
-                height: 24rem;
-
-                .newThings-img {
-                    width: 90%;
-                    height: 90%;
-                    margin-top: 1rem;
-                    border-radius: 1rem;
-                }
-            }
-
-            .ribbon {
-                @include customize-flex(space-between);
-                margin-top: 0.5rem;
-
-                .ribbon-wrap {
-                    @include customize-flex();
-                    margin-right: 2rem;
-
-                    &:hover {
-                        .blue {
-                            color: #4A99E9;
-                            background-color: #E6EEF6;
-                        }
-
-                        .blue+span {
-                            color: #4A99E9;
-                        }
-
-                        .green {
-                            color: #53B781;
-                            background-color: #E6F1EB;
-                        }
-
-                        .green+span {
-                            color: #53B781
-                        }
-
-                        .red {
-                            color: #E5397F;
-                            background-color: #F5E4EB;
-                        }
-
-                        .red+span {
-                            color: #E5397F;
-                        }
-
-                    }
-                }
-
-                .icon-wrap {
-                    @include customize-flex();
-                    width: 2rem;
-                    height: 2rem;
-                    border-radius: 50%;
-                    margin-right: 0.5rem;
-                    cursor: pointer;
-
-                    &:hover {
-                        background-color: #d6d6d6;
-                    }
-
-                    .ribbon-icon {
-
-                        font-size: 1rem;
-
-                    }
-                }
-
-            }
-
-
-        }
-    }
-
-
 }
 
 .main-right {

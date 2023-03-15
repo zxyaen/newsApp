@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { UserRoutingModule } from './user-routing.module';
 
 //user模块下的组件
-import { UserComponent } from './pages/user/user.component';
 import { UserHomeComponent } from './pages/user-home/user-home.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -13,18 +12,24 @@ import { LoginComponent } from './pages/login/login.component';
 import { SharedModule } from '../shared/shared.module';
 
 
+import { PublishContentComponent } from '../news/pages/publish-content/publish-content.component';
+import { NewsModule } from '../news/news.module';
+
+
 
 @NgModule({
   declarations: [
-    UserComponent,
     RegisterComponent,
     LoginComponent,
-    UserHomeComponent
+    UserHomeComponent,
+    // PublishContentComponent,
+
   ],
   imports: [
     CommonModule,
     UserRoutingModule,
     SharedModule,
+    NewsModule,
   ],
   exports: []
 })

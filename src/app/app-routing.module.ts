@@ -4,7 +4,6 @@ import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 // import { LoginComponent } from './user/pages/login/login.component';
 // import { RegisterComponent } from './pages/user/register/register.component';
-import { UserComponent } from './user/pages/user/user.component';
 
 const routes: Routes = [
   {

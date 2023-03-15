@@ -1,0 +1,20 @@
+<form>
+    <div class="new-things">
+        <textarea type="text" name="newThings" id="newThings" placeholder="有什么新鲜事？" [(ngModel)]="content"
+            autocomplete="off" class="newThings-content"></textarea>
+    </div>
+    <div class="ribbon">
+        <ul class="icon-wrap">
+            <li nz-icon nzType="picture" nzTheme="outline"></li>
+            <li nz-icon nzType="file-gif" nzTheme="outline"></li>
+            <li nz-icon nzType="smile" nzTheme="outline" (click)="showEmoji=true"></li>
+            <div class="emoji" *ngIf="showEmoji" (click)="showEmoji=false">
+                <emoji-mart title="Pick your emoji…" emoji="point_up" (emojiClick)="addEmoji($event)"></emoji-mart>
+            </div>
+
+            <li nz-icon nzType="environment" nzTheme="outline" (click)="getLocation()"></li>
+        </ul>
+        <button class="button" [disabled]="content.length==0" (click)="onSubmit()">发  布</button>
+        <!-- <div class="button" (click)="getFile()">开云</div> -->
+    </div>
+</form>
