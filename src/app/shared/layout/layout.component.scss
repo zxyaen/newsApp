@@ -25,22 +25,21 @@
             height: 100%;
 
             .content {
-                // background-color: antiquewhite;
                 border-left: 1px solid $line-grey;
                 border-right: 1px solid $line-grey;
                 width: 600px;
-                padding: 2rem 0;
-                .main-top{
-                    height: 50px;
-                    padding: 0 2rem;
+                padding: 1rem 0;
+                position: relative;
+
+                .main-top {
+                    position: absolute;
+                    width: 100%;
+                    background-color: rgb(255, 255, 255,0.97);
                 }
-                .main-content{
-                    padding-top: 1.5rem;
-                }
-                .new-things-content{
-                    // padding-top: 1rem;
+
+                .new-things-content {
+                    padding-top: 6rem;
                     height: 100%;
-                    background-color: aquamarine;
                     overflow: scroll;
                 }
             }

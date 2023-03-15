@@ -29,4 +29,10 @@ export class HttpService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(url, body, { headers: headers })
   }
+
+  getNews(path: string): Observable<any> {
+    const url = `${this.baseUrl}/news${path}`;
+    // const params = new HttpParams().set('username', name);
+    return this.http.get(url);
+  }
 }

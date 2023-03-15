@@ -25,6 +25,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { UserModule } from './user/user.module';
 import { SharedModule } from './shared/shared.module';
 import { UserAuthComponent } from './pages/user-auth/user-auth.component';
+import { JsonToObjectPipe } from './pipe/json-to-object.pipe';
 
 registerLocaleData(zh);
 
@@ -41,7 +42,7 @@ registerLocaleData(zh);
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    UserModule,
+    // UserModule,
     SharedModule,
   ],
   providers: [

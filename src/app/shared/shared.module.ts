@@ -8,6 +8,7 @@ import { SearchComponent } from './search/search.component';
 import { HeaderComponent } from './header/header.component';
 import { LayoutComponent } from './layout/layout.component';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { JsonToObjectPipe } from '../pipe/json-to-object.pipe';
 
 
 @NgModule({
@@ -15,14 +16,15 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
     HomeContentComponent,
     SearchComponent,
     HeaderComponent,
-    LayoutComponent
+    LayoutComponent,
+    JsonToObjectPipe,
   ],
   imports: [
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
     NzIconModule,
-    NzAvatarModule
+    NzAvatarModule,
   ],
   exports: [
     HomeContentComponent,
@@ -31,7 +33,8 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
     LayoutComponent,
     ReactiveFormsModule,
     NzIconModule,
-    NzAvatarModule
+    NzAvatarModule,
+    JsonToObjectPipe,
   ]
 })
 export class SharedModule { }

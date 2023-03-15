@@ -1,59 +1,176 @@
+<span></span>
 <app-layout>
     <app-header header [list]="list"></app-header>
     <span main-top class="title">主页</span>
-    <div main-content>
+    <div main-top class="main-content">
         <div class="shareNews">
             <div class="top">
-                <div class="recommended">
+                <div class="recommended" (click)="changeList('1')">
                     为你推荐
                 </div>
-                <div class="focus-on">
+                <div class="focus-on" (click)="changeList('0')">
                     正在关注
-                </div>
-            </div>
-            <div class="bottom">
-                <div class="avatar">
-                    <nz-avatar nzSize="large" nzIcon="user" nzSrc="../../../../assets/OIP.jpeg"></nz-avatar>
-                </div>
-                <div class="content">
-                    <form [formGroup]="form" (submit)="onSubmit()">
-                        <div class="new-things">
-                            <input type="text" name="newThings" id="newThings" placeholder="有什么新鲜事？"
-                                formControlName="newThings">
-                        </div>
-                        <div class="ribbon">
-                            <ul class="icon-wrap">
-                                <li nz-icon nzType="picture" nzTheme="outline"></li>
-                                <li nz-icon nzType="file-gif" nzTheme="outline"></li>
-                                <li nz-icon nzType="smile" nzTheme="outline"></li>
-                                <li nz-icon nzType="environment" nzTheme="outline"></li>
-                            </ul>
-                            <button class="button" [disabled]="!form.get('newThings')?.value">开云</button>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
     </div>
     <div new-things-content>
-        <div class="new-things-list">
+        <div class="bottom">
+            <div class="avatar">
+                <nz-avatar nzSize="large" nzIcon="user" nzSrc="../../../../assets/OIP.jpeg"></nz-avatar>
+            </div>
+            <div class="content">
+                <form [formGroup]="form" (submit)="onSubmit()">
+                    <div class="new-things">
+                        <input type="text" name="newThings" id="newThings" placeholder="有什么新鲜事？"
+                            formControlName="newThings">
+                    </div>
+                    <div class="ribbon">
+                        <ul class="icon-wrap">
+                            <li nz-icon nzType="picture" nzTheme="outline"></li>
+                            <li nz-icon nzType="file-gif" nzTheme="outline"></li>
+                            <li nz-icon nzType="smile" nzTheme="outline"></li>
+                            <li nz-icon nzType="environment" nzTheme="outline"></li>
+                        </ul>
+                        <button class="button" [disabled]="!form.get('newThings')?.value">开云</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="new-things-list" *ngIf="recommendedPeople">
             <ul>
-                <li *ngFor="let item of followUsers">
-                    <div class="forwarded">已转发</div>
+                <li *ngFor="let item of recommendUsers" class="item-wrap">
+                    <div class="forwarded" *ngIf="forwarded">已转发</div>
                     <div class="item-container">
-                        <div class="avatar">头像</div>
+                        <div class="avatar">
+                            <img [src]="item.avatar" alt="" class="avatar-img">
+                        </div>
                         <div class="content">
                             <div class="top">
                                 <div>
-                                    <span class="userName">{{item.name}}</span>
-                                    <span class="date">{{item.date}}</span>
+                                    <span class="userName">{{item.username}}</span>
+                                    <span>·</span>
+                                    <span class="date">{{item.dates | date:'MM月dd日'}}</span>
                                 </div>
                                 <div class="more">...</div>
+                            </div>
+                            <div class="newThings">
+                                {{item.newThings}}
+                            </div>
+                            <div class="newThings-img-container" *ngIf="item.picture">
+                                <img [src]="item.picture" alt="" class="newThings-img">
+                            </div>
+                            <div class="ribbon">
+                                <div class="ribbon-wrap">
+                                    <span class="icon-wrap blue">
+                                        <span nz-icon type="message" nzTheme="outline" class="ribbon-icon">
+                                        </span>
+                                    </span>
+                                    <span >{{item.comments | jsonToObject}}</span>
+                                </div>
+                                <div class="ribbon-wrap">
+                                    <span class="icon-wrap green">
+                                        <span nz-icon type="retweet" nzTheme="outline" class="ribbon-icon">
+                                        </span>
+                                    </span>
+                                    <span >{{item.forward | jsonToObject}}</span>
+                                </div>
+                                <div class="ribbon-wrap">
+                                    <span class="icon-wrap red">
+                                        <span nz-icon type="like" nzTheme="outline" class="ribbon-icon">
+                                        </span>
+                                    </span>
+                                    <span >{{item.likes | jsonToObject}}</span>
+                                </div>
+                                <div class="ribbon-wrap">
+                                    <span class="icon-wrap blue">
+                                        <span nz-icon type="bar-chart" nzTheme="outline" class="ribbon-icon">
+                                        </span>
+                                    </span>
+                                    <span >{{item.hot}}</span>
+                                </div>
+                                <div class="ribbon-wrap">
+                                    <span class="icon-wrap blue">
+                                        <span nz-icon type="upload" nzTheme="outline" class="ribbon-icon">
+                                        </span>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </li>
             </ul>
+        </div>
+        <div class="new-things-list" *ngIf="focusOnPeople">
+            <ul>
+                <li *ngFor="let item of followUsers" class="item-wrap">
+                    <div class="forwarded" *ngIf="forwarded">已转发</div>
+                    <div class="item-container">
+                        <div class="avatar">
+                            <img [src]="item.avatar" alt="" class="avatar-img">
+                        </div>
+                        <div class="content">
+                            <div class="top">
+                                <div>
+                                    <span class="userName">{{item.username}}</span>
+                                    <span>·</span>
+                                    <span class="date">{{item.dates | date:'MM月dd日'}}</span>
+                                </div>
+                                <div class="more">...</div>
+                            </div>
+                            <div class="newThings">
+                                {{item.newThings}}
+                            </div>
+                            <div class="newThings-img-container" *ngIf="item.picture">
+                                <img [src]="item.picture" alt="" class="newThings-img">
+                            </div>
+                            <div class="ribbon">
+                                <div class="ribbon-wrap">
+                                    <span class="icon-wrap blue">
+                                        <span nz-icon type="message" nzTheme="outline" class="ribbon-icon">
+                                        </span>
+                                    </span>
+                                    <span >{{item.comments | jsonToObject}}</span>
+                                </div>
+                                <div class="ribbon-wrap">
+                                    <span class="icon-wrap green">
+                                        <span nz-icon type="retweet" nzTheme="outline" class="ribbon-icon">
+                                        </span>
+                                    </span>
+                                    <span >{{item.forward | jsonToObject}}</span>
+                                </div>
+                                <div class="ribbon-wrap">
+                                    <span class="icon-wrap red">
+                                        <span nz-icon type="like" nzTheme="outline" class="ribbon-icon">
+                                        </span>
+                                    </span>
+                                    <span >{{item.likes | jsonToObject}}</span>
+                                </div>
+                                <div class="ribbon-wrap">
+                                    <span class="icon-wrap blue">
+                                        <span nz-icon type="bar-chart" nzTheme="outline" class="ribbon-icon">
+                                        </span>
+                                    </span>
+                                    <span >{{item.hot}}</span>
+                                </div>
+                                <div class="ribbon-wrap">
+                                    <span class="icon-wrap blue">
+                                        <span nz-icon type="upload" nzTheme="outline" class="ribbon-icon">
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <div main-right class="main-right">
+        <div class="search">
+            <app-search>
+            </app-search>
         </div>
     </div>
 </app-layout>

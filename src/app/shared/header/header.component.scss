@@ -1,7 +1,7 @@
 @import '/src//styles.scss';
 .header {
     width: 250px;
-    padding: 2rem;
+    padding: 1rem 2rem;
 
     .icon {
         width: 50px;
@@ -24,7 +24,7 @@
     }
 
     .list {
-        padding-top: 1rem;
+        // padding-top: 1rem;
 
         .item {
             margin: 0.5rem 0;
