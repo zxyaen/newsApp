@@ -18,37 +18,5 @@
     .main-box {
         display: flex;
         height: 100%;
-
-        .main {
-            display: flex;
-            width: 950px;
-            height: 100%;
-
-            .content {
-                border-left: 1px solid $line-grey;
-                border-right: 1px solid $line-grey;
-                width: 600px;
-                padding: 1rem 0;
-                position: relative;
-
-                .main-top {
-                    z-index: 1;
-                    position: absolute;
-                    width: 100%;
-                    background-color: rgb(255, 255, 255,0.97);
-                }
-
-                .new-things-content {
-                    padding-top: 6rem;
-                    height: 100%;
-                    overflow: scroll;
-                }
-            }
-
-            .right {
-                width: 350px;
-            }
-        }
-
     }
 }

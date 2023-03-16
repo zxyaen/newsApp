@@ -1,18 +1,6 @@
 <div class="wrap">
     <div class="main-box">
         <ng-content select="[header]"></ng-content>
-        <div class="main">
-            <div class="content">
-                <div class="main-top">
-                    <ng-content select="[main-top]"></ng-content>
-                </div>
-                <div class="new-things-content">
-                    <ng-content select="[new-things-content]"></ng-content>
-                </div>
-            </div>
-            <div class="right">
-                <ng-content select="[main-right]"></ng-content>
-            </div>
-        </div>
+        <ng-content select="[main]" class="main"></ng-content>
     </div>
 </div>

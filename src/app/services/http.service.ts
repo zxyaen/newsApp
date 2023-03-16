@@ -13,11 +13,15 @@ export class HttpService {
    * @param        {string} path  添加请求path
    * @return       {string} 返回完整请求路径
    */
-  getUser(path: string, name: string): Observable<any> {
+  getUser(path: string, name?: string): Observable<any> {
     const url = `${this.baseUrl}/user${path}`;
-    const params = new HttpParams().set('username', name);
-    return this.http.get(url, { params });
+    if (name) {
+      const params = new HttpParams().set(`${name}`, name);
+      return this.http.get(url, { params });
+    }
+    return this.http.get(url, { responseType: 'json' });
   }
+
   /**
    * @description : 请求跟路径下/user post请求
    * @param        {string} path   添加请求path

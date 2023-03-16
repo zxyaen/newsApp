@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -15,6 +15,7 @@ export class LoginComponent {
     account: false,
     password: false
   }
+  userInfo: object | undefined
 
   constructor(private LoginService: LoginService, private fb: FormBuilder, private router: Router) {
     this.form = this.fb.group({
@@ -65,13 +66,17 @@ export class LoginComponent {
       return
     }
 
-    const data = JSON.parse(JSON.stringify(this.form.value))
     try {
       //发送登陆请求，获取返回值
-      res = await this.login(data)
-      console.log(res)
+      res = await this.login(this.form.value)
       if (res.status === 200) {
-        this.router.navigateByUrl('/user/home')
+        if (!localStorage.getItem('sessionID')) {
+          this.LoginService.getSession().subscribe(res=>{
+            console.log(res);
+          })
+        }
+        this.router.navigate(['/user/homepage'], { queryParams: { username: this.form.value.account } })
+
       }
       else {
         //TODO：后端登陆校验不通过时，进行提示

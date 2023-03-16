@@ -1,0 +1,103 @@
+@import '/src/styles.scss';
+
+.title {
+    width: 100%;
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding: 0 2rem;
+    margin-top: -1rem;
+    @include customize-flex(none);
+
+    .back {
+        cursor: pointer;
+        margin-right: 2rem;
+    }
+
+    .user-info-top {
+
+        .yun-number {
+            font-size: 0.8rem;
+            color: rgb(126, 126, 122);
+            font-weight: normal;
+        }
+    }
+}
+
+.main-content {
+    width: 100%;
+    height: 30rem;
+    position: relative;
+    border-bottom: 1px solid $line-grey;
+    ;
+
+    .backgroundImg {
+        width: inherit;
+        height: 12rem;
+        background-color: #D1D9DD;
+    }
+
+    .avatar {
+        position: absolute;
+        top: 25%;
+        left: 1rem;
+        height: 8.5rem;
+        width: 8.5rem;
+        background-color: white;
+        @include customize-flex();
+        border-radius: 50%;
+
+        img {
+            width: 8rem;
+            height: 8rem;
+            border-radius: 50%;
+        }
+    }
+
+    .edit-info {
+        position: absolute;
+        top: 45%;
+        right: 2rem;
+        width: 6.3rem;
+        height: 2.2rem;
+        @include customize-flex();
+        border: 1px solid #D1D9DD;
+        border-radius: 1rem;
+
+        &:hover {
+            background-color: #E7E7E8;
+            cursor: pointer;
+        }
+
+        .edit-info-button {
+            font-weight: 600;
+        }
+    }
+    .user-info{
+        margin-top: 5rem;
+        width: inherit;
+        padding-left: 2rem;
+        .username{
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+        .account{
+            font-size: 1rem;
+            color: rgb(137, 137, 132);
+            font-weight: normal;
+            margin-top: -0.3rem;
+            margin-bottom: 0.6rem;
+        }
+        .registration-time{
+            font-size: 1rem;
+            color: rgb(137, 137, 132);
+        }
+        .follow{
+            @include customize-flex(none,none);
+            font-size: 1rem;
+            color: rgb(137, 137, 132);
+            .followers{
+                margin-right: 2rem;
+            }
+        }
+    }
+}

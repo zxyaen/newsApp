@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IpfsService } from 'src/app/services/ipfs.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,7 @@ import { IpfsService } from 'src/app/services/ipfs.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  constructor(private ipfs:IpfsService){
-    this.ipfs.addFileToIpfs('nihao ipfs')
-  }
+  constructor(private ipfs: IpfsService) { }
   list = [{
     icon: 'borderless-table',
     title: '探索'

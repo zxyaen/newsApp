@@ -1,0 +1,65 @@
+@import '/src/styles.scss';
+
+
+
+.title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding: 0 1rem;
+}
+
+.main-content {
+    margin-top: 0.8rem;
+
+    .shareNews {
+        .top {
+            @include customize-flex(space-between, none);
+            border-bottom: 1px solid $line-grey;
+
+            .recommended,
+            .focus-on {
+                width: 50%;
+                height: 3rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-weight: 500;
+                font-size: 1rem;
+                color: #566370;
+                cursor: pointer;
+
+                &:hover {
+                    color: #101419;
+                    background-color: #E7E7E8;
+                }
+            }
+        }
+    }
+}
+.bottom {
+    @include customize-flex(none, none);
+    margin-top: 1rem;
+
+    .avatar {
+        width: 12%;
+        padding: 0 1rem;
+    }
+
+    .content {
+        width: 90%;
+    }
+}
+
+.new-things-list {
+    height: calc(100vh - 300px - 3.5rem);
+}
+
+
+
+.main-right {
+    padding: 2rem 0;
+
+    .search {
+        @include customize-flex();
+    }
+}

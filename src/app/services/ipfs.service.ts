@@ -16,15 +16,13 @@ export class IpfsService {
   })
 
   path: string = ''
-  constructor(private http: HttpService) {
-
-  }
+  constructor(private http: HttpService) { }
 
   /**
    * @description : 将发布内容存到IPFS中，再将IPFS返回值与发布内容备份到数据库
    * @param        {string} text
    * @return       {*}  返回数据在IPFS上存储的路径
-   */  
+   */
   async addFileToIpfs(text: string) {
     const buffer = Buffer.from(text)
     const res = await this.IPFS.add(buffer)

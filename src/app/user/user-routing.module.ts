@@ -8,7 +8,8 @@ import { NotFoundComponent } from '../pages/not-found/not-found.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { UserHomeComponent } from './pages/user-home/user-home.component';
-import { UserInfoComponent } from './pages/user-info/user-info.component';
+import { InfoPageComponent } from './pages/info-page/info-page.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 
 const routes: Routes = [
   {
@@ -18,10 +19,11 @@ const routes: Routes = [
     path: 'register', component: RegisterComponent
   },
   {
-    path: 'home', component: UserHomeComponent
-  },
-  {
-    path: 'userinfo', component: UserInfoComponent
+    path: '', component: UserHomeComponent,
+    children: [
+      { path: 'infopage', component: InfoPageComponent },
+      { path: 'homepage', component: HomePageComponent }
+    ]
   },
   {
     path: '**', component: NotFoundComponent

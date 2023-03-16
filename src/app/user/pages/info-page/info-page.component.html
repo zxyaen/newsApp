@@ -1,0 +1,56 @@
+<!-- <app-layout>
+    <app-header header [list]="list"></app-header> -->
+
+<app-home-content>
+    <div main-top class="title">
+        <div nz-icon nzType="arrow-left" nzTheme="outline" class="back"></div>
+        <div class="user-info-top">
+            <div class="username">username</div>
+            <div class="yun-number">0文章</div>
+        </div>
+    </div>
+    <div main-top class="main-content">
+        <img src="../../../../assets/OIP.jpeg" *ngIf="backgroundImg" class="backgroundImg">
+        <div *ngIf="!backgroundImg"  class="backgroundImg"></div>
+        <div class="avatar">
+            <img src="../../../../assets/OIP.jpeg" alt="">
+        </div>
+        <div class="edit-info">
+            <div class="edit-info-button">编辑个人资料</div>
+        </div>
+        <div class="user-info">
+            <div class="username">username</div>
+            <div class="account">@account</div>
+            <div class="registration-time">注册时间</div>
+            <div class="follow">
+                <div class="followers">关注者</div>
+            <div class="followed">正在关注</div>
+            </div>
+        </div>
+    </div>
+    <!-- <div new-things-content>
+            <div class="bottom">
+                <div class="avatar">
+                    <nz-avatar nzSize="large" nzIcon="user" nzSrc="../../../../assets/OIP.jpeg"></nz-avatar>
+                </div>
+                <div class="content">
+                    <app-publish-content></app-publish-content>
+                </div>
+            </div>
+            <div class="new-things-list" *ngIf="recommendedPeople">
+                <app-new-things-list [newThingsList]="recommendUsers"></app-new-things-list>
+            </div>
+            <div class="new-things-list" *ngIf="focusOnPeople">
+                <app-new-things-list [newThingsList]="followUsers"></app-new-things-list>
+            </div>
+
+        </div>
+        <div main-right class="main-right">
+            <div class="search">
+                <app-search>
+                </app-search>
+            </div>
+        </div> -->
+</app-home-content>
+
+<!-- </app-layout> -->

@@ -1,6 +1,8 @@
 <app-layout>
     <app-header header [list]="list"></app-header>
-    <div main-top class="search"> <app-search></app-search></div>
+    <app-home-content main>
+        <div main-top class="search"> <app-search></app-search></div>
 
-    <app-user-auth main-right></app-user-auth>
+        <app-user-auth main-right></app-user-auth>
+    </app-home-content>
 </app-layout>

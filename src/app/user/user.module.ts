@@ -14,7 +14,8 @@ import { SharedModule } from '../shared/shared.module';
 
 import { PublishContentComponent } from '../news/pages/publish-content/publish-content.component';
 import { NewsModule } from '../news/news.module';
-import { UserInfoComponent } from './pages/user-info/user-info.component';
+import { InfoPageComponent } from './pages/info-page/info-page.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 
 
 
@@ -23,7 +24,8 @@ import { UserInfoComponent } from './pages/user-info/user-info.component';
     RegisterComponent,
     LoginComponent,
     UserHomeComponent,
-    UserInfoComponent,
+    InfoPageComponent,
+    HomePageComponent,
     // PublishContentComponent,
 
   ],
