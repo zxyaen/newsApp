@@ -5,7 +5,7 @@
     <div main-top class="title">
         <div nz-icon nzType="arrow-left" nzTheme="outline" class="back"></div>
         <div class="user-info-top">
-            <div class="username">username</div>
+            <div class="username">{{userInfo.username}}</div>
             <div class="yun-number">0文章</div>
         </div>
     </div>
@@ -13,14 +13,14 @@
         <img src="../../../../assets/OIP.jpeg" *ngIf="backgroundImg" class="backgroundImg">
         <div *ngIf="!backgroundImg"  class="backgroundImg"></div>
         <div class="avatar">
-            <img src="../../../../assets/OIP.jpeg" alt="">
+            <img [src]="userInfo.avatar" alt="">
         </div>
         <div class="edit-info">
             <div class="edit-info-button">编辑个人资料</div>
         </div>
         <div class="user-info">
-            <div class="username">username</div>
-            <div class="account">@account</div>
+            <div class="username">{{userInfo.username}}</div>
+            <div class="account">@{{userInfo.account_address}}</div>
             <div class="registration-time">注册时间</div>
             <div class="follow">
                 <div class="followers">关注者</div>

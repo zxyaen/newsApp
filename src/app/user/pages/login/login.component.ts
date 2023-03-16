@@ -28,6 +28,7 @@ export class LoginComponent {
   async login(data: JSON): Promise<any> {
     //将Observable对象的最后一个值转化为Promise对象
     return await lastValueFrom(this.LoginService.Login(data).pipe())
+
   }
 
   goUserHomePage(status: number) {
@@ -70,12 +71,11 @@ export class LoginComponent {
       //发送登陆请求，获取返回值
       res = await this.login(this.form.value)
       if (res.status === 200) {
-        if (!localStorage.getItem('sessionID')) {
-          this.LoginService.getSession().subscribe(res=>{
-            console.log(res);
-          })
-        }
-        this.router.navigate(['/user/homepage'], { queryParams: { username: this.form.value.account } })
+        const data: any = res.data
+
+        console.log(JSON.stringify(data.session.status));
+        localStorage.setItem('session', JSON.stringify(data.session))
+        this.router.navigate(['/user/homepage'])
 
       }
       else {

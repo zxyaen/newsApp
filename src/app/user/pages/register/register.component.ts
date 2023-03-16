@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegisterService } from 'src/app/services/register.service';
-import { AuthenticationValidate } from '../../../validate/AuthenticationValidate'
+import { AuthenticationValidate } from '../../validate/AuthenticationValidate'
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -16,10 +16,6 @@ export class RegisterComponent implements OnInit {
     email: false,
     confirmPassword: false
   }
-
-
-
-  // storage: any;
 
 
   constructor(private registerHttp: RegisterService, private fb: FormBuilder) {

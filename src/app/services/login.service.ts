@@ -19,14 +19,16 @@ export class LoginService {
   }
 
   async getUserInfo(username: string) {
-    return await lastValueFrom(this.http.getUser('/userInfo', username).pipe())
+    let res = await lastValueFrom(this.http.getUser('/userInfo', username).pipe())
+    return res[0]
   }
 
   getSession() {
-    return this.http.getUser('/getsession')
+    return this.http.get('/getsession')
   }
 
-  checkSession(sessionID: string) {
-    return this.http.getUser('/checksession', sessionID)
+  async checkSession(sessionID: string) {
+    let res = await lastValueFrom(this.http.getUser('/checkSession', sessionID).pipe())
+    return res
   }
 }

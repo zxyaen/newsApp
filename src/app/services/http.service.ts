@@ -16,6 +16,15 @@ export class HttpService {
   getUser(path: string, name?: string): Observable<any> {
     const url = `${this.baseUrl}/user${path}`;
     if (name) {
+      const params = new HttpParams().set('username', name);
+      return this.http.get(url, { params });
+    }
+    return this.http.get(url, { responseType: 'json' });
+  }
+
+  get(path: string, name?: string): Observable<any> {
+    const url = `${this.baseUrl}/user${path}`;
+    if (name) {
       const params = new HttpParams().set(`${name}`, name);
       return this.http.get(url, { params });
     }

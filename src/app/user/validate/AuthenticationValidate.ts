@@ -6,9 +6,9 @@ export class AuthenticationValidate {
 
   static isExitUsername(registerService: RegisterService): AsyncValidatorFn {
     return (control: AbstractControl): Observable<ValidationErrors | null> => {
-      const value = control.value;
+      const username = control.value;
       debounceTime(30000)
-      return registerService.IsExitUsername(value).pipe(
+      return registerService.IsExitUsername(username).pipe(
         map(res => {
           if (res.data.isExit) {
             // 如果数据符合某些条件，则返回一个验证错误对象

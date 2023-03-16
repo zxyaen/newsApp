@@ -18,7 +18,7 @@ export class RegisterService {
     return this.http.getUser('/isExitUsername', username);
   }
 
-  /**
+  /** 
    * @description : 用户注册
    * @param        {JSON} data  包含username，password
    * @return       {*}
