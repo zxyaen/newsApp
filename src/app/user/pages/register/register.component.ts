@@ -69,8 +69,8 @@ export class RegisterComponent implements OnInit {
 
     console.log(this.form.value);
     // 处理要发送的内容
-    const data = JSON.stringify(this.form.value)
-    this.register(JSON.parse(data))
+    const data = this.form.value
+    this.register(data)
   }
 
 }

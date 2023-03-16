@@ -1,8 +1,10 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
-interface obj {
+interface item {
   icon: string,
-  title: string
+  title: string,
+  goPage?: string
 }
 @Component({
   selector: 'app-header',
@@ -10,5 +12,14 @@ interface obj {
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  @Input() list: obj[] = []
+  @Input() list: item[] = []
+
+  constructor(private router: Router) { }
+
+  goPage(url: string | undefined) {
+    if (url) {
+      this, this.router.navigateByUrl(url)
+    }
+  }
+
 }

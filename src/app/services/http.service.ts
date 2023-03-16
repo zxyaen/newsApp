@@ -35,4 +35,10 @@ export class HttpService {
     // const params = new HttpParams().set('username', name);
     return this.http.get(url);
   }
+
+  postIpfs(path: string, body: JSON): Observable<any> {
+    const url = `${this.baseUrl}/ipfs${path}`;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(url, body, { headers: headers })
+  }
 }

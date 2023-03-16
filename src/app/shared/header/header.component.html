@@ -6,7 +6,7 @@
     </div>
     <ul class="list">
         <li *ngFor="let item of list" class="item">
-            <div class="rounded-button">
+            <div class="rounded-button" (click)="goPage(item.goPage)">
                 <span nz-icon [nzType]="item.icon" nzTheme="outline"></span>
                 <span>{{item.title}}</span>
             </div>

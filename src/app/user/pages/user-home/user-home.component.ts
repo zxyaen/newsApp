@@ -42,25 +42,11 @@ export class UserHomeComponent implements OnInit {
     title: '列表'
   }, {
     icon: 'user',
-    title: '个人资料'
+    title: '个人资料',
+    goPage:'/user/userinfo'
   }]
   followUsers: Users[] = []
   recommendUsers: Users[] = []
-  ribbonList = [{
-    type: 'message',
-    number: null
-  }, {
-    type: 'retweet',
-    number: null
-  }, {
-    type: 'like',
-    number: null
-  }, {
-    type: 'bar-chart',
-    number: null
-  }, {
-    type: 'upload',
-  }]
   form: FormGroup
 
   constructor(private fb: FormBuilder, private newsHttp: NewsService) {
@@ -70,7 +56,6 @@ export class UserHomeComponent implements OnInit {
   }
   async ngOnInit(): Promise<void> {
     await this.getAllNews()
-    this.getIconNumber()
   }
 
   getAllNews() {
@@ -82,15 +67,6 @@ export class UserHomeComponent implements OnInit {
       this.recommendUsers = res
     })
   }
-
-  getIconNumber() {
-    console.log(this.followUsers);
-    this.followUsers.forEach(e => {
-      console.log('122223');
-      console.log(e.comments);
-    });
-  }
-
 
   onSubmit() {
     console.log(this.form.value);

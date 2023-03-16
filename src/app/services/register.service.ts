@@ -22,8 +22,8 @@ export class RegisterService {
    * @description : 用户注册
    * @param        {JSON} data  包含username，password
    * @return       {*}
-   */  
-  Register(data: JSON) {
-    return this.http.postUser('/register', data)
+   */
+  Register(data: object) {
+    return this.http.postUser('/register', JSON.parse(JSON.stringify(data)))
   }
 }

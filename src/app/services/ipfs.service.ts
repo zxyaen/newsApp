@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import * as ipfs from 'ipfs-http-client';
 import { Buffer } from 'buffer';
+import { HttpService } from './http.service';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -14,15 +16,26 @@ export class IpfsService {
   })
 
   path: string = ''
-  constructor() {
+  constructor(private http: HttpService) {
 
   }
-  async addFileToIpfs(obj: any) {
-    const buffer = Buffer.from(obj)
+
+  /**
+   * @description : 将发布内容存到IPFS中，再将IPFS返回值与发布内容备份到数据库
+   * @param        {string} text
+   * @return       {*}  返回数据在IPFS上存储的路径
+   */  
+  async addFileToIpfs(text: string) {
+    const buffer = Buffer.from(text)
     const res = await this.IPFS.add(buffer)
-    this.path = res.path
-    // const res = await this.IPFS.add('hello ipfs')
-    console.log(res);
+    const saveToDBData = { res, text }
+    this.saveIpfsFileToDB(saveToDBData).subscribe(res => {
+      console.log(res.data);
+    })
+  }
+
+  saveIpfsFileToDB(data: object): Observable<any> {
+    return this.http.postIpfs('/saveFile', JSON.parse(JSON.stringify(data)));
   }
 
   async getFileFromIpfs() {
