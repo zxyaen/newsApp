@@ -36,6 +36,7 @@
         }
     }
 }
+
 .bottom {
     @include customize-flex(none, none);
     margin-top: 1rem;
@@ -43,6 +44,19 @@
     .avatar {
         width: 12%;
         padding: 0 1rem;
+
+        .avatar-img {
+            @include customize-flex();
+            width: 2.4rem;
+            height: 2.4rem;
+            border-radius: 50%;
+        }
+
+        .tm {
+            font-size: 1rem;
+            font-weight: bold;
+            opacity: 0.8;
+        }
     }
 
     .content {

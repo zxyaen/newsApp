@@ -6,6 +6,8 @@ import { NewThingsListComponent } from './pages/new-things-list/new-things-list.
 
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import { GetInitialsPipe } from '../pipe/get-initials.pipe';
+import { share } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
     CommonModule,
     SharedModule,
     EditorModule,
-    PickerModule
+    PickerModule,
+    // SharedModule,
   ],
   exports: [
     PublishContentComponent,

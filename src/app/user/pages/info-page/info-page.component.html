@@ -11,20 +11,30 @@
     </div>
     <div main-top class="main-content">
         <img src="../../../../assets/OIP.jpeg" *ngIf="backgroundImg" class="backgroundImg">
-        <div *ngIf="!backgroundImg"  class="backgroundImg"></div>
+        <div *ngIf="!backgroundImg" class="backgroundImg"></div>
         <div class="avatar">
             <img [src]="userInfo.avatar" alt="">
         </div>
-        <div class="edit-info">
+        <div *ngIf="!userInfo.avatar" class="avatar tm" [ngStyle]='{"background-color":userInfo.avatar_color}'>
+            {{userInfo.username | getInitials}}
+        </div>
+        <div class="edit-info" (click)="isEdit=true">
             <div class="edit-info-button">编辑个人资料</div>
+            <div *ngIf="isEdit" ngClass="edit-user-info">
+                <div (click)="isEdit=false">x</div>
+                <form>
+                    <input type="file" accept=".jpg,.png" (change)="onFileSelected($event)">
+                    <!-- <button type="submit" (click)="onFileSelected()">上传</button> -->
+                  </form>
+            </div>
         </div>
         <div class="user-info">
             <div class="username">{{userInfo.username}}</div>
             <div class="account">@{{userInfo.account_address}}</div>
-            <div class="registration-time">注册时间</div>
+            <div class="registration-time">注册时间：{{userInfo.registration_time | date:'MM月dd日' }}</div>
             <div class="follow">
-                <div class="followers">关注者</div>
-            <div class="followed">正在关注</div>
+                <div class="followers">关注者 {{userInfo.follows}}</div>
+                <div class="followed">正在关注 {{userInfo.followed}}</div>
             </div>
         </div>
     </div>

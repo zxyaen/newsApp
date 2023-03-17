@@ -8,12 +8,12 @@ import { HttpService } from './http.service';
 })
 export class NewsService {
 
-  constructor(private http:HttpService) { }
-  getFollowUsers(){
+  constructor(private http: HttpService) { }
+  getFollowUsers() {
     return this.http.getNews('/getFollowUsers')
   }
 
-  getRecommendUsers(){
+  getRecommendUsers() {
     return this.http.getNews('/getRecommendUsers')
   }
 }

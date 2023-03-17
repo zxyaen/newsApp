@@ -44,6 +44,14 @@ export class RegisterComponent implements OnInit {
     })
   }
 
+  getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
 
 
   onSubmit() {
@@ -65,7 +73,7 @@ export class RegisterComponent implements OnInit {
 
     console.log(this.form.value);
     // 处理要发送的内容
-    const data = this.form.value
+    const data = Object.assign(this.form.value, { avatarColor: this.getRandomColor() })
     this.register(data)
   }
 

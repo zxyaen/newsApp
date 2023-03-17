@@ -3,19 +3,23 @@
         <div class="forwarded" *ngIf="forwarded">已转发</div>
         <div class="item-container">
             <div class="avatar">
-                <img [src]="item.avatar" alt="" class="avatar-img">
+                <img [src]="item.avatar" alt="" class="avatar-img" *ngIf="item.avatar">
+                <div *ngIf="!item.avatar" class="avatar-img tm" [ngStyle]='{"background-color":item.avatar_color}'>
+                    {{item.username | getInitials}}
+
+                </div>
             </div>
             <div class="content">
                 <div class="top">
                     <div>
                         <span class="userName">{{item.username}}</span>
                         <span>·</span>
-                        <span class="date">{{item.dates | date:'MM月dd日'}}</span>
+                        <span class="date">{{item.dates | date:'MM月dd日 HH时mm分'}}</span>
                     </div>
                     <div class="more">...</div>
                 </div>
                 <div class="newThings">
-                    {{item.newThings}}
+                    {{item.content}}
                 </div>
                 <div class="newThings-img-container" *ngIf="item.picture">
                     <img [src]="item.picture" alt="" class="newThings-img">

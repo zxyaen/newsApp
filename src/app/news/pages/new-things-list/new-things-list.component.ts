@@ -6,12 +6,13 @@ interface Users {
   avatar: string,
   username: string,
   dates: string,
-  newThings: string,
+  content: string,
   picture?: string,
   comments?: string,
   forward?: string,
   likes?: string,
   hot?: number,
+  avatar_color?: string
 }
 @Component({
   selector: 'app-new-things-list',
@@ -22,4 +23,14 @@ interface Users {
 export class NewThingsListComponent {
   @Input() newThingsList !: Users[]
   forwarded: Boolean = false
+  constructor() { }
+
+  getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
 }

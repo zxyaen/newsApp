@@ -9,6 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { LayoutComponent } from './layout/layout.component';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { JsonToObjectPipe } from '../pipe/json-to-object.pipe';
+import { GetInitialsPipe } from '../pipe/get-initials.pipe';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { JsonToObjectPipe } from '../pipe/json-to-object.pipe';
     HeaderComponent,
     LayoutComponent,
     JsonToObjectPipe,
+    GetInitialsPipe,
   ],
   imports: [
     CommonModule,
@@ -37,6 +39,7 @@ import { JsonToObjectPipe } from '../pipe/json-to-object.pipe';
     NzIconModule,
     NzAvatarModule,
     JsonToObjectPipe,
+    GetInitialsPipe,
   ]
 })
 export class SharedModule { }

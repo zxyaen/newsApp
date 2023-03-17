@@ -27,6 +27,7 @@ import { SharedModule } from './shared/shared.module';
 import { UserAuthComponent } from './pages/user-auth/user-auth.component';
 import { JsonToObjectPipe } from './pipe/json-to-object.pipe';
 import { PublishContentComponent } from './news/pages/publish-content/publish-content.component';
+import { GetInitialsPipe } from './pipe/get-initials.pipe';
 
 registerLocaleData(zh);
 

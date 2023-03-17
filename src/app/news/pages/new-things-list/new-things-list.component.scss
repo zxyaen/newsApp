@@ -22,9 +22,15 @@
         margin: 0 1rem;
 
         .avatar-img {
+            @include customize-flex();
             width: 2.4rem;
             height: 2.4rem;
             border-radius: 50%;
+        }
+        .tm{
+            font-size: 1rem;
+            font-weight: bold;
+            opacity: 0.8;
         }
     }
 
