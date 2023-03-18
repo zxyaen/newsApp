@@ -4,21 +4,21 @@ import { LoginService } from 'src/app/services/login.service';
 import { NewsService } from 'src/app/services/news.service';
 
 interface Users {
-  avatar: string,
-  username: string,
-  dates: string,
-  content: string,
+  AVATAR: string,
+  USERNAME: string,
+  RELEASE_TIME: string,
+  CONTENT: string,
   picture?: string,
   comments?: string,
   forward?: string,
   likes?: string,
   hot?: number,
-  avatar_color?: string
+  AVATAR_COLOR?: string
 }
 interface User {
-  avatar: string,
-  avatar_color: string,
-  username: string
+  AVATAR: string,
+  AVATAR_COLOR: string,
+  USERNAME: string
 }
 
 @Component({
@@ -33,9 +33,9 @@ export class HomePageComponent implements OnInit {
   followUsers: Users[] = []
   recommendUsers: Users[] = []
   userInfo: User = {
-    avatar: '',
-    avatar_color: '',
-    username: ''
+    AVATAR: '',
+    AVATAR_COLOR: '',
+    USERNAME: ''
   }
 
 
@@ -63,7 +63,6 @@ export class HomePageComponent implements OnInit {
   async ngOnInit() {
     let session: any = localStorage.getItem('session')
     this.userInfo = await this.loginService.getUserInfo(JSON.parse(session).username)
-    console.log(this.userInfo);
     this.getAllNews()
   }
 
@@ -80,12 +79,10 @@ export class HomePageComponent implements OnInit {
 
   getAllNews() {
     this.newsService.getFollowUsers().subscribe(res => {
-      // console.log((res[0].comments));
       this.followUsers = res
     })
     this.newsService.getRecommendUsers().subscribe(res => {
       this.recommendUsers = res
-      // console.log(res);
     })
   }
 }

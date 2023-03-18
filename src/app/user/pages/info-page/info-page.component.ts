@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 interface user {
-  avatar: string
-  username: string
-  account_address: string,
-  avatar_color: string,
-  registration_time: string,
-  follows: number,
-  followed: number,
+  AVATAR: string
+  USERNAME: string
+  ACCOUNT_ADDRESS: string,
+  AVATAR_COLOR: string,
+  RELEASE_TIME: string,
+  follows?: number,
+  followed?: number,
 }
 @Component({
   selector: 'app-info-page',
@@ -18,11 +18,11 @@ interface user {
 export class InfoPageComponent implements OnInit {
   backgroundImg: string | undefined
   userInfo: user = {
-    avatar: '',
-    username: '',
-    account_address: '',
-    avatar_color: '',
-    registration_time: '',
+    AVATAR: '',
+    USERNAME: '',
+    ACCOUNT_ADDRESS: '',
+    AVATAR_COLOR: '',
+    RELEASE_TIME: '',
     follows: 0,
     followed: 0
   }

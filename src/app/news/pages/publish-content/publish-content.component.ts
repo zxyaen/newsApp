@@ -41,8 +41,4 @@ export class PublishContentComponent implements OnInit {
     console.log(this.content);
     this.ipfsService.addFileToIpfs(this.content)
   }
-
-  getFile() {
-    this.ipfsService.getFileFromIpfs()
-  }
 }

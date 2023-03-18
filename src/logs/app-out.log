@@ -1,0 +1,19 @@
+2023-03-18 12:58:48: 
+2023-03-18 12:58:48: Initial Chunk Files            | Names            |  Raw Size
+2023-03-18 12:58:48: vendor.js                      | vendor           |   5.27 MB |
+2023-03-18 12:58:48: styles.css, styles.js          | styles           | 752.59 kB |
+2023-03-18 12:58:48: polyfills.js                   | polyfills        | 314.31 kB |
+2023-03-18 12:58:48: main.js                        | main             |  70.63 kB |
+2023-03-18 12:58:48: runtime.js                     | runtime          |  12.61 kB |
+2023-03-18 12:58:48: 
+2023-03-18 12:58:48: | Initial Total    |   6.40 MB
+2023-03-18 12:58:48: 
+2023-03-18 12:58:48: Lazy Chunk Files               | Names            |  Raw Size
+2023-03-18 12:58:48: src_app_user_user_module_ts.js | user-user-module | 790.74 kB |
+2023-03-18 12:58:48: 
+2023-03-18 12:58:48: Build at: 2023-03-18T04:58:48.728Z - Hash: 790acd7ad8dc93fc - Time: 4109ms
+2023-03-18 12:58:48: 
+2023-03-18 12:58:48: ** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
+2023-03-18 12:58:48: 
+2023-03-18 12:58:48: 
+2023-03-18 12:58:48: ✔ Compiled successfully.

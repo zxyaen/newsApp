@@ -3,16 +3,16 @@ import { flush } from '@angular/core/testing';
 
 
 interface Users {
-  avatar: string,
-  username: string,
-  dates: string,
-  content: string,
-  picture?: string,
+  AVATAR: string,
+  USERNAME: string,
+  RELEASE_TIME: string,
+  CONTENT: string,
+  PICTURE?: string,
   comments?: string,
   forward?: string,
   likes?: string,
   hot?: number,
-  avatar_color?: string
+  AVATAR_COLOR?: string
 }
 @Component({
   selector: 'app-new-things-list',

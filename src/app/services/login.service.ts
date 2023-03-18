@@ -19,7 +19,8 @@ export class LoginService {
   }
 
 
-  async getUserInfo(username: string) {
+  //ERROR WHY
+  async getUserInfo(username: any) {
     let res = await lastValueFrom(this.http.get('/user/userInfo', username).pipe())
     return res
   }

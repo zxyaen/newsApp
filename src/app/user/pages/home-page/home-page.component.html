@@ -15,9 +15,9 @@
     <div new-things-content>
         <div class="bottom">
             <div class="avatar">
-                <nz-avatar nzSize="large" nzIcon="user" [nzSrc]="userInfo.avatar" *ngIf="userInfo.avatar"></nz-avatar>
-                <div *ngIf="!userInfo.avatar" class="avatar-img tm" [ngStyle]='{"background-color":userInfo.avatar_color}'>
-                    {{userInfo.username | getInitials}}
+                <nz-avatar nzSize="large" nzIcon="user" [nzSrc]="userInfo.AVATAR" *ngIf="userInfo.AVATAR"></nz-avatar>
+                <div *ngIf="!userInfo.AVATAR" class="avatar-img tm" [ngStyle]='{"background-color":userInfo.AVATAR_COLOR}'>
+                    {{userInfo.USERNAME | getInitials}}
                 </div>
             </div>
             <div class="content">

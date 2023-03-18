@@ -7,7 +7,7 @@ import { AuthenticationValidate } from '../../validate/AuthenticationValidate'
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
   form: FormGroup
   modifyTheTextStyle: Boolean = false
   modifyTheStyle = {
@@ -29,8 +29,6 @@ export class RegisterComponent implements OnInit {
       validator: AuthenticationValidate.confirmPassword
     })
   }
-  ngOnInit(): void {
-  }
 
   isExitUsername(username: string) {
     this.registerHttp.IsExitUsername(username).subscribe(res => {
@@ -44,6 +42,7 @@ export class RegisterComponent implements OnInit {
     })
   }
 
+  //获取一个随机颜色头像背景
   getRandomColor() {
     const letters = '0123456789ABCDEF';
     let color = '#';
