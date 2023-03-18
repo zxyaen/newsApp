@@ -15,7 +15,8 @@ export class RegisterService {
    */
   IsExitUsername(username: string) {
     console.log('IsExitUsername');
-    return this.http.getUser('/isExitUsername', username);
+    return this.http.get('/user/isExitUsername', username);
+
   }
 
   /** 
@@ -24,6 +25,6 @@ export class RegisterService {
    * @return       {*}
    */
   Register(data: object) {
-    return this.http.postUser('/register', JSON.parse(JSON.stringify(data)))
+    return this.http.post('/user/register', JSON.parse(JSON.stringify(data)))
   }
 }

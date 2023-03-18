@@ -15,20 +15,17 @@ export class LoginService {
    * @return       {*}
    */
   Login(data: object) {
-    return this.http.postUser('/login', JSON.parse(JSON.stringify(data)))
+    return this.http.post('/user/login', JSON.parse(JSON.stringify(data)))
   }
+
 
   async getUserInfo(username: string) {
-    let res = await lastValueFrom(this.http.getUser('/userInfo', username).pipe())
-    return res[0]
-  }
-
-  getSession() {
-    return this.http.get('/getsession')
+    let res = await lastValueFrom(this.http.get('/user/userInfo', username).pipe())
+    return res
   }
 
   async checkSession(sessionID: string) {
-    let res = await lastValueFrom(this.http.getUser('/checkSession', sessionID).pipe())
+    let res = await lastValueFrom(this.http.get('/user/checkSession', sessionID).pipe())
     return res
   }
 }

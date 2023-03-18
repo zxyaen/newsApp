@@ -21,15 +21,25 @@ export class HttpService {
     }
     return this.http.get(url, { responseType: 'json' });
   }
-
-  get(path: string, name?: string): Observable<any> {
-    const url = `${this.baseUrl}/user${path}`;
-    if (name) {
-      const params = new HttpParams().set(`${name}`, name);
-      return this.http.get(url, { params });
+  get(path: string, data?: string): Observable<any> {
+    const url = `${this.baseUrl}${path}`;
+    if (data) {
+      const params =new HttpParams().set('param', data);
+        return this.http.get(url, {params})
     }
-    return this.http.get(url, { responseType: 'json' });
+    return this.http.get(url, { responseType: 'json' })
   }
+
+
+  // get(path: string, name?: string): Observable<any> {
+  //   const url = `${this.baseUrl}/user${path}`;
+  //   if (name) {
+  //     const params = new HttpParams().set(`${name}`, name);
+  //     return this.http.get(url, { params });
+  //   }
+  //   return this.http.get(url, { responseType: 'json' });
+  // }
+
 
   /**
    * @description : 请求跟路径下/user post请求
@@ -37,8 +47,8 @@ export class HttpService {
    * @param        {JSON} body    请求体，json格式
    * @return       {*}
    */
-  postUser(path: string, body: JSON): Observable<any> {
-    const url = `${this.baseUrl}/user${path}`;
+  post(path: string, body: object): Observable<any> {
+    const url = `${this.baseUrl}${path}`
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(url, body, { headers: headers })
   }
@@ -49,9 +59,5 @@ export class HttpService {
     return this.http.get(url);
   }
 
-  postIpfs(path: string, body: JSON): Observable<any> {
-    const url = `${this.baseUrl}/ipfs${path}`;
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(url, body, { headers: headers })
-  }
+
 }

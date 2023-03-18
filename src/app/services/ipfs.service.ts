@@ -23,7 +23,6 @@ export class IpfsService {
    * @param        {string} text
    * @return       {*}  返回数据在IPFS上存储的路径
    */
-
   async addFileToIpfs(text: string) {
     let session: any = localStorage.getItem('session')
     session = JSON.parse(session)
@@ -40,10 +39,10 @@ export class IpfsService {
   }
 
   saveIpfsFileToDB(data: object): Observable<any> {
-    return this.http.postIpfs('/saveFile', JSON.parse(JSON.stringify(data)));
+    return this.http.post('/ipfs/saveFile', JSON.parse(JSON.stringify(data)));
   }
   saveIpfsFileToContract(data: object): Observable<any> {
-    return this.http.postIpfs('/saveToContract', JSON.parse(JSON.stringify(data)))
+    return this.http.post('/ipfs/saveToContract', JSON.parse(JSON.stringify(data)))
   }
 
   async getFileFromIpfs() {
