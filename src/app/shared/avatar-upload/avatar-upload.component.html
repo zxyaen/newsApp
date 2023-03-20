@@ -1,0 +1,14 @@
+<div>
+  <div class="add">
+    <div>
+      <div class="avatar-wrap">
+        <img [src]="base64Avatar" alt="" class="avatar" *ngIf="isPath">
+        <div class="avatar-color" [ngStyle]='{"background-color":avatarColor}' *ngIf="!isPath">
+          <div>p</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <input type="file" name="file" accept="image/*" (change)="handleFiles($event)" #image>
+</div>

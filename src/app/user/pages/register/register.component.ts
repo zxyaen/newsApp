@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegisterService } from 'src/app/services/register.service';
 import { AuthenticationValidate } from '../../validate/AuthenticationValidate'
+import { Utils } from '../../../utils/utils'
+import { UtilsService } from 'src/app/services/utils.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -18,7 +20,7 @@ export class RegisterComponent {
   }
 
 
-  constructor(private registerHttp: RegisterService, private fb: FormBuilder) {
+  constructor(private registerHttp: RegisterService, private fb: FormBuilder, private utilsService: UtilsService) {
     this.form = this.fb.group({
       // TODO：配置自定义检验，验证用户名是否存在
       username: this.fb.control('', [Validators.required], [AuthenticationValidate.isExitUsername(this.registerHttp)]),
@@ -42,17 +44,6 @@ export class RegisterComponent {
     })
   }
 
-  //获取一个随机颜色头像背景
-  getRandomColor() {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  }
-
-
   onSubmit() {
     // 设置标识符，表单中检验存在错误时不提交表单
     let error: Boolean = false
@@ -72,7 +63,7 @@ export class RegisterComponent {
 
     console.log(this.form.value);
     // 处理要发送的内容
-    const data = Object.assign(this.form.value, { avatarColor: this.getRandomColor() })
+    const data = Object.assign(this.form.value, { avatarColor: this.utilsService.getRandomColor() })
     this.register(data)
   }
 

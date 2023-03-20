@@ -1,6 +1,3 @@
-<!-- <app-layout>
-    <app-header header [list]="list"></app-header> -->
-
 <app-home-content>
     <div main-top class="title">
         <div nz-icon nzType="arrow-left" nzTheme="outline" class="back"></div>
@@ -10,22 +7,17 @@
         </div>
     </div>
     <div main-top class="main-content">
-        <img src="../../../../assets/OIP.jpeg" *ngIf="backgroundImg" class="backgroundImg">
-        <div *ngIf="!backgroundImg" class="backgroundImg"></div>
-        <div class="avatar">
-            <img [src]="userInfo.AVATAR" alt="">
-        </div>
-        <div *ngIf="!userInfo.AVATAR" class="avatar tm" [ngStyle]='{"background-color":userInfo.AVATAR_COLOR}'>
-            {{userInfo.USERNAME | getInitials}}
-        </div>
-        <div class="edit-info" (click)="isEdit=true">
-            <div class="edit-info-button">编辑个人资料</div>
-            <div *ngIf="isEdit" ngClass="edit-user-info">
-                <div (click)="isEdit=false">x</div>
-                <form>
-                    <input type="file" accept=".jpg,.png" (change)="onFileSelected($event)">
-                    <!-- <button type="submit" (click)="onFileSelected()">上传</button> -->
-                </form>
+        <div class="user-info-top">
+            <img src="../../../../assets/OIP.jpeg" *ngIf="backgroundImg" class="backgroundImg">
+            <div *ngIf="isPath" class="backgroundImg"></div>
+            <div class="avatar" *ngIf="isPath">
+                <img [src]="avatarImgBase64" alt="">
+            </div>
+            <div *ngIf="!isPath" class="avatar tm" [ngStyle]='{"background-color":userInfo.AVATAR_COLOR}'>
+                {{userInfo.USERNAME | getInitials}}
+            </div>
+            <div class="edit-info" (click)="isEdit=true">
+                <div class="edit-info-button">编辑个人资料</div>
             </div>
         </div>
         <div class="user-info">
@@ -38,29 +30,29 @@
             </div>
         </div>
     </div>
-    <!-- <div new-things-content>
-            <div class="bottom">
-                <div class="avatar">
-                    <nz-avatar nzSize="large" nzIcon="user" nzSrc="../../../../assets/OIP.jpeg"></nz-avatar>
-                </div>
-                <div class="content">
-                    <app-publish-content></app-publish-content>
-                </div>
-            </div>
-            <div class="new-things-list" *ngIf="recommendedPeople">
-                <app-new-things-list [newThingsList]="recommendUsers"></app-new-things-list>
-            </div>
-            <div class="new-things-list" *ngIf="focusOnPeople">
-                <app-new-things-list [newThingsList]="followUsers"></app-new-things-list>
-            </div>
-
-        </div>
-        <div main-right class="main-right">
-            <div class="search">
-                <app-search>
-                </app-search>
-            </div>
-        </div> -->
 </app-home-content>
 
-<!-- </app-layout> -->
+<div class="wrap" *ngIf="isEdit">
+    <app-center-box (click)="stopPropagation($event)">
+        <div top>
+            <div>
+                <span nz-icon nzType="close" nzTheme="outline" class="close"></span>
+            </div>
+            <div class="title">编辑个人资料</div>
+            <button (click)="onSubmit()" class="button">保存</button>
+        </div>
+        <div main>
+            <app-background-upload class="background-color"></app-background-upload>
+
+            <app-avatar-upload [avatarColor]="this.userInfo.AVATAR_COLOR" class="avatar"></app-avatar-upload>
+
+            <form [formGroup]="form">
+                <label for="intro">个人简介</label>
+                <input type="text" formControlName="intro">
+
+            </form>
+        </div>
+
+
+    </app-center-box>
+</div>

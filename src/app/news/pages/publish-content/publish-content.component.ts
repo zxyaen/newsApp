@@ -12,9 +12,9 @@ export class PublishContentComponent implements OnInit {
   // form: FormGroup
   content: string = ''
   showEmoji: Boolean = false
-  latitude:any
-  longitude:any
-  constructor(private fb: FormBuilder, private ipfsService: IpfsService,private utilsService:UtilsService) {
+  latitude: any
+  longitude: any
+  constructor(private fb: FormBuilder, private ipfsService: IpfsService, private utilsService: UtilsService) {
     // this.form = this.fb.group({
     //   newThings: this.fb.control('')
     // })
@@ -26,7 +26,7 @@ export class PublishContentComponent implements OnInit {
     this.content = `${this.content}${e.emoji.native}`
     console.log(e.emoji.native);
   }
-  getLocation(){
+  getLocation() {
     // navigator.geolocation.getCurrentPosition(
     //   (position) => {
     //     console.log(position);
@@ -40,5 +40,10 @@ export class PublishContentComponent implements OnInit {
   onSubmit() {
     console.log(this.content);
     this.ipfsService.addFileToIpfs(this.content)
+  }
+
+  stopPropagation(e: Event) {
+    this.showEmoji = false
+    e.stopPropagation()
   }
 }

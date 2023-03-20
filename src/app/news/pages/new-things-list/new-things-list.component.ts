@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { flush } from '@angular/core/testing';
+import { IpfsService } from 'src/app/services/ipfs.service';
+import { UtilsService } from 'src/app/services/utils.service';
 
 
 interface Users {
@@ -12,25 +14,51 @@ interface Users {
   forward?: string,
   likes?: string,
   hot?: number,
-  AVATAR_COLOR?: string
+  AVATAR_COLOR?: string,
+  isPath: Boolean,
+  avatarImgBase64: string
 }
+
 @Component({
   selector: 'app-new-things-list',
   templateUrl: './new-things-list.component.html',
   styleUrls: ['./new-things-list.component.scss']
 })
 
-export class NewThingsListComponent {
+export class NewThingsListComponent implements OnInit, OnChanges {
   @Input() newThingsList !: Users[]
+  userNewsArr: Users[] = []
+  //是否有转发
   forwarded: Boolean = false
-  constructor() { }
+  //头像是否是ipfs地址
+  isPath: Boolean = false
+  constructor(private utilsService: UtilsService, private ipfsService: IpfsService) {
+  }
 
-  getRandomColor() {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
+  ngOnInit(): void {
+
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    this.userNewsArr = this.newThingsList
+    for (let item of this.userNewsArr) {
+      this.testAvatar(item)
+      if (item.isPath) {
+        this.ipfsService.getFileFromIpfs(item.AVATAR_COLOR).then(res => {
+          res = this.utilsService.Utf8ArrayToStr(res)
+          const colonIndex = res.indexOf(':'); // 获取冒号的位置
+          const result = res.substr(colonIndex + 1).trim(); // 提取冒号后面的部分，并去除空格
+          item.avatarImgBase64 = 'data:' + result
+        })
+      }
     }
-    return color;
+    console.log(this.userNewsArr);
+  }
+
+
+  //检查是默认背景色还是已经更换过头像的IPFS path地址
+  testAvatar(item: any) {
+    const regex = /^#/;
+    if (regex.test(item.AVATAR_COLOR)) item.isPath = false
+    else item.isPath = true
   }
 }

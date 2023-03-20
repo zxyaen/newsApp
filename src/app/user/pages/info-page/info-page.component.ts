@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { IpfsService } from 'src/app/services/ipfs.service';
 import { LoginService } from 'src/app/services/login.service';
+import { UserService } from 'src/app/services/user.service';
+import { UtilsService } from 'src/app/services/utils.service';
 interface user {
   AVATAR: string
   USERNAME: string
@@ -16,7 +20,6 @@ interface user {
   styleUrls: ['./info-page.component.scss']
 })
 export class InfoPageComponent implements OnInit {
-  backgroundImg: string | undefined
   userInfo: user = {
     AVATAR: '',
     USERNAME: '',
@@ -26,8 +29,28 @@ export class InfoPageComponent implements OnInit {
     follows: 0,
     followed: 0
   }
+  form: FormGroup
+
+  intro: any = null
+  birthday: any = null
+  location: any = null
+
+  backgroundImg: string | undefined
+  avatarImgBase64: any = null
   isEdit: Boolean = false
-  constructor(private router: Router, private loginService: LoginService) {
+  isPath: Boolean = false
+
+  constructor(private ipfsService: IpfsService,
+    private loginService: LoginService,
+    private fb: FormBuilder,
+    private utilsService: UtilsService) {
+    this.form = this.fb.group({
+      backgroundImg: this.fb.control(''),
+      avatar: this.fb.control(''),
+      intro: this.fb.control(''),
+      location: this.fb.control(''),
+      birthday: this.fb.control('')
+    })
     let isLoggedIn = localStorage.getItem('session')
     // if (isLoggedIn) {
     //   let session = JSON.parse(isLoggedIn)
@@ -47,31 +70,42 @@ export class InfoPageComponent implements OnInit {
     //   this.router.navigate(['/home']);
     // }
   }
-  onFileSelected(event: any) {
-    const file: File = event.target.files[0];
-    if (file.type === 'image/jpeg' || file.type === 'image/png') {
-      this.uploadImage(file);
-    } else {
-      alert('只能上传jpg和png格式的图片');
-    }
-  }
-  uploadImage(file: File) {
-    const formData = new FormData();
-    formData.append('file', file, file.name);
-    console.log(formData);
-    // this.http.post('https://example.com/upload', formData).subscribe(
-    //   (response) => {
-    //     console.log('上传成功');
-    //   },
-    //   (error) => {
-    //     console.error('上传失败');
-    //   }
-    // );
-  }
+
+
+
 
   async ngOnInit() {
     let session: any = localStorage.getItem('session')
     this.userInfo = await this.loginService.getUserInfo(JSON.parse(session).username)
-    console.log(this.userInfo);
+    this.testAvatar()
+    if (this.isPath) {
+      await this.ipfsService.getFileFromIpfs(this.userInfo.AVATAR_COLOR).then(res => {
+        res = this.utilsService.Utf8ArrayToStr(res)
+        const colonIndex = res.indexOf(':'); // 获取冒号的位置
+        const result = res.substr(colonIndex + 1).trim(); // 提取冒号后面的部分，并去除空格
+        this.avatarImgBase64 = 'data:' + result
+      })
+    }
   }
+
+  //修改用户信息弹框阻止冒泡
+  stopPropagation(e: Event) {
+    e.stopPropagation()
+  }
+
+
+  //检查是默认背景色还是已经更换过头像的IPFS path地址
+  testAvatar() {
+    const regex = /^#/;
+    if (regex.test(this.userInfo.AVATAR_COLOR)) this.isPath = false
+    else this.isPath = true
+  }
+
+  //提交修改用户信息表单
+  onSubmit() {
+    this.isEdit = false
+    window.location.reload()
+  }
+
+
 }

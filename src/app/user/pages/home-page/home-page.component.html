@@ -15,10 +15,11 @@
     <div new-things-content>
         <div class="bottom">
             <div class="avatar">
-                <nz-avatar nzSize="large" nzIcon="user" [nzSrc]="userInfo.AVATAR" *ngIf="userInfo.AVATAR"></nz-avatar>
-                <div *ngIf="!userInfo.AVATAR" class="avatar-img tm" [ngStyle]='{"background-color":userInfo.AVATAR_COLOR}'>
+                <nz-avatar nzSize="large" nzIcon="user" [nzSrc]="AVATAR" *ngIf="isPath"></nz-avatar>
+                <div *ngIf="!isPath" class="avatar-img tm" [ngStyle]='{"background-color":userInfo.AVATAR_COLOR}'>
                     {{userInfo.USERNAME | getInitials}}
                 </div>
+                {{userInfo.AVATAR}}
             </div>
             <div class="content">
                 <app-publish-content></app-publish-content>

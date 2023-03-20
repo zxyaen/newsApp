@@ -30,7 +30,7 @@ export class IpfsService {
     const res = await this.IPFS.add(Buffer.from(JSON.stringify(data)))
     const saveData = { res, data }
     this.saveIpfsFileToContract(saveData).subscribe(res => {
-      if(res.err){
+      if (res.err) {
         console.log(res);
       }
       console.log(res);
@@ -45,5 +45,39 @@ export class IpfsService {
   }
   saveIpfsFileToContract(data: object): Observable<any> {
     return this.http.post('/news/saveToContract', JSON.parse(JSON.stringify(data)))
+  }
+
+
+  //将图片存到ipfs
+  async addImageToIpfs(base64: string) {
+    let session: any = localStorage.getItem('session')
+    session = JSON.parse(session)
+    const res = await this.IPFS.add(base64)
+    const path = res.path
+    const saveData = { res, username: session.username }
+    this.saveAvatarIpfsToDB(saveData).subscribe(res => {
+      console.log(res.data);
+    })
+    return path
+  }
+  saveAvatarIpfsToDB(data: object): Observable<any> {
+    return this.http.post('/user/saveAvatar', JSON.parse(JSON.stringify(data)));
+  }
+
+
+  //取出头像
+  async getFileFromIpfs(path: any): Promise<any> {
+    try {
+      // 从IPFS获取文件数据
+      const asyncIterator = this.IPFS.get(path);
+      // 使用 for await...of 语句迭代异步迭代器，获取文件数据
+      for await (const data of asyncIterator) {
+        // 返回文件数据
+        return data;
+      }
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
   }
 }

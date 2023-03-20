@@ -15,9 +15,7 @@ export class AuthGuard implements CanActivate {
     if (isLoggedIn) {
       let session = JSON.parse(isLoggedIn)
       this.loginService.checkSession(session.status).then(res => {
-        console.log(res);
         if (res.status == 400) {
-          console.log(res);
           // 若session无效，则禁止跳转到用户页，并重定向到主页
           this.router.navigate(['/home']);
           return false;
@@ -30,9 +28,6 @@ export class AuthGuard implements CanActivate {
         }
       })
     }
-
     return true;
-
   }
-
 }

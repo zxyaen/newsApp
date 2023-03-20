@@ -1,12 +1,11 @@
 <ul>
-    <li *ngFor="let item of newThingsList" class="item-wrap">
+    <li *ngFor="let item of userNewsArr" class="item-wrap">
         <div class="forwarded" *ngIf="forwarded">已转发</div>
         <div class="item-container">
             <div class="avatar">
-                <img [src]="item.AVATAR" alt="" class="avatar-img" *ngIf="item.AVATAR">
-                <div *ngIf="!item.AVATAR" class="avatar-img tm" [ngStyle]='{"background-color":item.AVATAR_COLOR}'>
+                <img [src]="item.avatarImgBase64" alt="" class="avatar-img" *ngIf="item.isPath">
+                <div *ngIf="!item.isPath" class="avatar-img tm" [ngStyle]='{"background-color":item.AVATAR_COLOR}'>
                     {{item.USERNAME | getInitials}}
-
                 </div>
             </div>
             <div class="content">

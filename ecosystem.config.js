@@ -2,7 +2,7 @@ module.exports = {
   apps: [{
     name: 'newsDApp',
     script: 'ng serve',
-    watch: 'true',
+    watch: true,
     cwd: './src',
     ignore_watch: [
       "node_modules",
