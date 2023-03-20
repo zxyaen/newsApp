@@ -10,7 +10,6 @@ export class UserService {
   constructor(private http: HttpService) { }
 
   modifyUserInfo(data: object): Observable<any> {
-    console.log(JSON.parse(JSON.stringify(data)));
     return this.http.post('/user/modifyUserInfo', JSON.parse(JSON.stringify(data)))
   }
   modifyUserAvatar(data: object): Observable<any> {

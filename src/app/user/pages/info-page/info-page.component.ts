@@ -3,16 +3,27 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IpfsService } from 'src/app/services/ipfs.service';
 import { LoginService } from 'src/app/services/login.service';
+import { NewsService } from 'src/app/services/news.service';
 import { UserService } from 'src/app/services/user.service';
 import { UtilsService } from 'src/app/services/utils.service';
-interface user {
+interface User {
   AVATAR: string
   USERNAME: string
   ACCOUNT_ADDRESS: string,
   AVATAR_COLOR: string,
   RELEASE_TIME: string,
-  follows?: number,
-  followed?: number,
+  REGISTRATION_TIME: string,
+  FOLLOWS: string,
+  FANS: string,
+  CONTENT: string,
+  PICTURE?: string,
+  comments?: string,
+  forward?: string,
+  likes?: string,
+  hot?: number,
+  isPath: Boolean,
+  avatarImgBase64: string,
+  IPFS_PATH: string
 }
 @Component({
   selector: 'app-info-page',
@@ -20,15 +31,21 @@ interface user {
   styleUrls: ['./info-page.component.scss']
 })
 export class InfoPageComponent implements OnInit {
-  userInfo: user = {
+  userInfo: User = {
     AVATAR: '',
     USERNAME: '',
     ACCOUNT_ADDRESS: '',
     AVATAR_COLOR: '',
     RELEASE_TIME: '',
-    follows: 0,
-    followed: 0
+    REGISTRATION_TIME: '',
+    FOLLOWS: '',
+    FANS: '',
+    isPath: false,
+    CONTENT: '',
+    avatarImgBase64: '',
+    IPFS_PATH: ''
   }
+  myNews: User[] = []
   form: FormGroup
 
   intro: any = null
@@ -43,7 +60,8 @@ export class InfoPageComponent implements OnInit {
   constructor(private ipfsService: IpfsService,
     private loginService: LoginService,
     private fb: FormBuilder,
-    private utilsService: UtilsService) {
+    private utilsService: UtilsService,
+    private newsService: NewsService) {
     this.form = this.fb.group({
       backgroundImg: this.fb.control(''),
       avatar: this.fb.control(''),
@@ -51,7 +69,7 @@ export class InfoPageComponent implements OnInit {
       location: this.fb.control(''),
       birthday: this.fb.control('')
     })
-    let isLoggedIn = localStorage.getItem('session')
+    // let isLoggedIn = localStorage.getItem('session')
     // if (isLoggedIn) {
     //   let session = JSON.parse(isLoggedIn)
     //   this.loginService.checkSession(session.status).then(res => {
@@ -86,19 +104,23 @@ export class InfoPageComponent implements OnInit {
         this.avatarImgBase64 = 'data:' + result
       })
     }
+    this.getPrivyNews()
   }
-
-  //修改用户信息弹框阻止冒泡
-  stopPropagation(e: Event) {
-    e.stopPropagation()
-  }
-
 
   //检查是默认背景色还是已经更换过头像的IPFS path地址
   testAvatar() {
     const regex = /^#/;
     if (regex.test(this.userInfo.AVATAR_COLOR)) this.isPath = false
     else this.isPath = true
+  }
+
+  getPrivyNews() {
+    this.newsService.getPrivyNews({ username: this.userInfo.USERNAME }).subscribe(res => {
+      for(let item of res[1]){
+        Object.assign(item,res[0][0])
+      }
+      this.myNews= res[1]
+    })
   }
 
   //提交修改用户信息表单

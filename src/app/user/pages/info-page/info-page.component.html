@@ -23,19 +23,23 @@
         <div class="user-info">
             <div class="username">{{userInfo.USERNAME}}</div>
             <div class="account">@{{userInfo.ACCOUNT_ADDRESS}}</div>
-            <div class="registration-time">注册时间：{{userInfo.RELEASE_TIME | date:'MM月dd日' }}</div>
+            <div class="registration-time">注册时间：{{userInfo.REGISTRATION_TIME | date:'MM月dd日' }}</div>
             <div class="follow">
-                <div class="followers">关注者 {{userInfo.follows}}</div>
-                <div class="followed">正在关注 {{userInfo.followed}}</div>
+                <div class="followers">关注者 {{userInfo.FOLLOWS}}</div>
+                <div class="followed">正在关注 {{userInfo.FANS}}</div>
             </div>
         </div>
     </div>
+    <div new-things-content class="new-things-content">
+        <app-new-things-list [newThingsList]="myNews"></app-new-things-list>
+    </div>
 </app-home-content>
 
+
 <div class="wrap" *ngIf="isEdit">
-    <app-center-box (click)="stopPropagation($event)">
+    <app-center-box >
         <div top>
-            <div>
+            <div (click)="isEdit=false">
                 <span nz-icon nzType="close" nzTheme="outline" class="close"></span>
             </div>
             <div class="title">编辑个人资料</div>

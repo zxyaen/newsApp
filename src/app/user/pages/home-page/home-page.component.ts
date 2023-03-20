@@ -17,7 +17,8 @@ interface Users {
   hot?: number,
   AVATAR_COLOR?: string,
   isPath: Boolean,
-  avatarImgBase64: string
+  avatarImgBase64: string,
+  IPFS_PATH:string
 }
 interface User {
   AVATAR: string,

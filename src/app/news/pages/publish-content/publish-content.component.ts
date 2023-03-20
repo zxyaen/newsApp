@@ -38,8 +38,10 @@ export class PublishContentComponent implements OnInit {
     this.utilsService.getLocation('202.100.100.0')
   }
   onSubmit() {
-    console.log(this.content);
     this.ipfsService.addFileToIpfs(this.content)
+    setTimeout(() => {
+      window.location.reload()
+    }, 2000)
   }
 
   stopPropagation(e: Event) {

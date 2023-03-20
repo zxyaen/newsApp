@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { HttpService } from './http.service';
 
@@ -19,6 +20,10 @@ export class NewsService {
 
   getNewsEvent() {
     return this.http.get('/newsEvent')
+  }
+  getPrivyNews(data:object): Observable<any>{
+    console.log(data);
+    return this.http.post('/news/getPrivyNews',JSON.parse(JSON.stringify(data)))
   }
 
 }
