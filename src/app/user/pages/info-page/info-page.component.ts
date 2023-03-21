@@ -52,7 +52,7 @@ export class InfoPageComponent implements OnInit {
   birthday: any = null
   location: any = null
 
-  backgroundImg: string | undefined
+  backgroundImg: string | undefined 
   avatarImgBase64: any = null
   isEdit: Boolean = false
   isPath: Boolean = false
@@ -63,8 +63,6 @@ export class InfoPageComponent implements OnInit {
     private utilsService: UtilsService,
     private newsService: NewsService) {
     this.form = this.fb.group({
-      backgroundImg: this.fb.control(''),
-      avatar: this.fb.control(''),
       intro: this.fb.control(''),
       location: this.fb.control(''),
       birthday: this.fb.control('')

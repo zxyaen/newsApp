@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
@@ -28,6 +28,7 @@ import { UserAuthComponent } from './pages/user-auth/user-auth.component';
 import { JsonToObjectPipe } from './pipe/json-to-object.pipe';
 import { PublishContentComponent } from './news/pages/publish-content/publish-content.component';
 import { GetInitialsPipe } from './pipe/get-initials.pipe';
+// import { HttpInterceptorService } from './services/http-interceptor.service';
 
 registerLocaleData(zh);
 
@@ -49,7 +50,13 @@ registerLocaleData(zh);
     SharedModule,
   ],
   providers: [
-    { provide: NZ_I18N, useValue: zh_CN }
+    { provide: NZ_I18N, useValue: zh_CN },  
+    // 依赖注入
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: HttpInterceptorService,
+    //   multi: true,
+    // }
   ],
   bootstrap: [AppComponent],
 })

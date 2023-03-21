@@ -14,7 +14,7 @@
                         <div *ngIf="form.get('username')?.value ||modifyTheStyle.username">
                             {{form.get('username')?.value?.length}}/30
                         </div>
-                        <div  class="loading">
+                        <div class="loading">
                             <span nz-icon [nzType]="'loading'" *ngIf="form.get('username')?.status==='PENDING'"></span>
                         </div>
                     </div>
@@ -22,13 +22,15 @@
                         [ngClass]="{'input-error':form.get('username')?.errors&&form.get('username')?.touched}"
                         (focus)="modifyTheStyle.username=true" (blur)="modifyTheStyle.username=false">
                 </div>
-                <div
-                    *ngIf="form.get('username')?.errors && form.get('username')?.touched || form.get('username')?.dirty">
+                <div *ngIf="form.get('username')?.errors && form.get('username')?.touched || form.get('username')?.dirty">
                     <div *ngIf="form.get('username')?.errors?.['required']" class="errorTips">
                         用户名不可以为空
                     </div>
                     <div *ngIf="form.get('username')?.hasError('IsExitUsername')" class="errorTips">
                         用户名已存在
+                    </div>
+                    <div *ngIf="form.get('username')?.hasError('minlength') || form.get('username')?.hasError('maxlength')" class="errorTips">
+                        用户名长度应在5-30之间
                     </div>
                 </div>
             </div>
@@ -61,6 +63,9 @@
                     *ngIf="form.get('password')?.errors && form.get('password')?.touched || form.get('password')?.dirty">
                     <div *ngIf="form.get('password')?.errors?.['required']" class="errorTips">
                         密码不可以为空
+                    </div>
+                    <div *ngIf="form.get('password')?.hasError('minlength') || form.get('password')?.hasError('maxlength')" class="errorTips">
+                        密码长度应在5-30之间
                     </div>
                 </div>
             </div>

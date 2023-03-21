@@ -20,13 +20,15 @@
 
             span {
                 font-size: 1.2rem;
-                margin: 20px;
+                // margin-top: 1rem;
+                margin:0 1rem;
+                margin-top: 0.8rem;
                 cursor: pointer;
             }
 
             .title {
                 padding-top: 0.4rem;
-                font-size: 1.8rem;
+                font-size: 1.2rem;
                 font-weight: bold;
             }
         }
@@ -59,7 +61,7 @@
                 .input-container {
                     position: relative;
                     width: 30rem;
-                    height: 5rem;
+                    height: 4rem;
                     // display: flex;
                     justify-content: space-between;
                     align-items: center;
@@ -75,13 +77,14 @@
                         top: 0.2rem;
                         left: 0.6rem;
                         color: #999;
+                        padding-bottom: 0.2rem;
 
                         .text-error :focus {
                             color: red !important;
                         }
 
                         .has-value {
-                            font-size: 1.5rem;
+                            font-size: 1.4rem;
                             top: 0.2rem;
                             left: 0.6rem;
                             transition: 0.4s all ease-in-out;
@@ -90,8 +93,8 @@
                         .no-value {
                             font-size: 2rem;
                             position: absolute;
-                            top: 0.6rem;
-                            left: 0.6rem;
+                            top: 0.3rem;
+                            left: 0.3rem;
                             transition: 0.4s all ease-in-out;
                         }
                     }

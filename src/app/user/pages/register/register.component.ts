@@ -4,6 +4,7 @@ import { RegisterService } from 'src/app/services/register.service';
 import { AuthenticationValidate } from '../../validate/AuthenticationValidate'
 import { Utils } from '../../../utils/utils'
 import { UtilsService } from 'src/app/services/utils.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -20,12 +21,12 @@ export class RegisterComponent {
   }
 
 
-  constructor(private registerHttp: RegisterService, private fb: FormBuilder, private utilsService: UtilsService) {
+  constructor(private registerHttp: RegisterService, private fb: FormBuilder, private utilsService: UtilsService,private router:Router) {
     this.form = this.fb.group({
       // TODO：配置自定义检验，验证用户名是否存在
-      username: this.fb.control('', [Validators.required], [AuthenticationValidate.isExitUsername(this.registerHttp)]),
+      username: this.fb.control('', [Validators.required, Validators.minLength(5), Validators.maxLength(30)], [AuthenticationValidate.isExitUsername(this.registerHttp)]),
       email: this.fb.control(''),
-      password: this.fb.control('', Validators.required),
+      password: this.fb.control('', [Validators.required, Validators.minLength(5), Validators.maxLength(30)]),
       confirmPassword: this.fb.control('', Validators.required),
     }, {
       validator: AuthenticationValidate.confirmPassword
@@ -65,6 +66,7 @@ export class RegisterComponent {
     // 处理要发送的内容
     const data = Object.assign(this.form.value, { avatarColor: this.utilsService.getRandomColor() })
     this.register(data)
+    this.router.navigateByUrl('/user/login')
   }
 
 }
