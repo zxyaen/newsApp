@@ -12,7 +12,7 @@ export class HttpService {
   constructor(private http: HttpClient) { }
   // 使用 localhost 存储用户凭证，在请求头带上
 
-  get(path: string, data?: string): Observable<any> {
+  get(path: string, data?: string | null): Observable<any> {
     const url = `${this.baseUrl}${path}`;
     const headers = new HttpHeaders({
       'responseType': 'json',

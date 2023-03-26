@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import * as ipfs from 'ipfs-http-client';
 import { Buffer } from 'buffer';
 import { HttpService } from './http.service';
-import { Observable } from 'rxjs';
+import { lastValueFrom, Observable } from 'rxjs';
+import { LoginService } from './login.service';
 
 
 @Injectable({
@@ -16,17 +17,30 @@ export class IpfsService {
   })
 
   path: string = ''
-  constructor(private http: HttpService) { }
+  username: string | undefined
+  account: string | undefined
+  constructor(private http: HttpService, private LoginService: LoginService) {
 
+  }
+
+  async getUserInfo(username: any) {
+    let res = await lastValueFrom(this.http.get('/user/userInfo', username).pipe())
+    const { USERNAME, ACCOUNT_ADDRESS } = res
+    this.username = USERNAME
+    this.account= ACCOUNT_ADDRESS
+    return res
+  }
+  
   /**
    * @description : 将发布内容存到IPFS中，再将IPFS返回值与发布内容备份到数据库和智能合约的事件中
    * @param        {string} text 发布内容
    * @return       {*}  返回数据在IPFS上存储的路径
    */
   async addFileToIpfs(text: string) {
-    let session: any = localStorage.getItem('session')
-    session = JSON.parse(session)
-    let data = { text, username: session.username, address: session.account }
+    // let session: any = localStorage.getItem('session')
+    // session = JSON.parse(session)
+    console.log(this.username,this.account);
+    let data = { text, username: this.username, address: this.account }
     const res = await this.IPFS.add(Buffer.from(JSON.stringify(data)))
     const saveData = { res, data }
     this.saveIpfsFileToContract(saveData).subscribe(res => {
@@ -50,11 +64,11 @@ export class IpfsService {
 
   //将图片存到ipfs
   async addImageToIpfs(base64: string) {
-    let session: any = localStorage.getItem('session')
-    session = JSON.parse(session)
+    // let session: any = localStorage.getItem('session')
+    // session = JSON.parse(session)
     const res = await this.IPFS.add(base64)
     const path = res.path
-    const saveData = { res, username: session.username }
+    const saveData = { res, username: this.username }
     this.saveAvatarIpfsToDB(saveData).subscribe(res => {
       console.log(res.data);
     })

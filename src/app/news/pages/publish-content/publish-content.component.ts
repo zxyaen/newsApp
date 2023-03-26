@@ -39,9 +39,9 @@ export class PublishContentComponent implements OnInit {
   }
   onSubmit() {
     this.ipfsService.addFileToIpfs(this.content)
-    setTimeout(() => {
-      window.location.reload()
-    }, 2000)
+    // setTimeout(() => {
+    //   window.location.reload()
+    // }, 2000)
   }
 
   stopPropagation(e: Event) {

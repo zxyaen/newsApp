@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IpfsService } from 'src/app/services/ipfs.service';
 import { LoginService } from 'src/app/services/login.service';
 import { NewsService } from 'src/app/services/news.service';
+import { UserService } from 'src/app/services/user.service';
 import { UtilsService } from 'src/app/services/utils.service';
 import { Utils } from 'src/app/utils/utils';
 
@@ -18,7 +19,7 @@ interface Users {
   AVATAR_COLOR?: string,
   isPath: Boolean,
   avatarImgBase64: string,
-  IPFS_PATH:string
+  IPFS_PATH: string
 }
 interface User {
   AVATAR: string,
@@ -44,7 +45,7 @@ export class HomePageComponent implements OnInit {
   }
   AVATAR: any
   isPath: Boolean = false
-  constructor(private newsService: NewsService, private ipfsService: IpfsService, private loginService: LoginService, private utilsService: UtilsService) {
+  constructor(private newsService: NewsService, private ipfsService: IpfsService, private loginService: LoginService, private utilsService: UtilsService, private userService: UserService) {
     // let isLoggedIn = localStorage.getItem('session')
     // if (isLoggedIn) {
     //   let session = JSON.parse(isLoggedIn)
@@ -68,7 +69,10 @@ export class HomePageComponent implements OnInit {
 
   async ngOnInit() {
     let session: any = localStorage.getItem('session')
-    this.userInfo = await this.loginService.getUserInfo(JSON.parse(session).username)
+    this.userService.checkToken().subscribe(res=>{
+      console.log(res);
+    })
+      this.userInfo = await this.loginService.getUserInfo(JSON.parse(session).username)
     this.getAllNews()
     this.testAvatar()
     if (this.isPath) {

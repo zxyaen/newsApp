@@ -81,6 +81,7 @@ export class LoginComponent {
       }
       else {
         //TODO：后端登陆校验不通过时，进行提示
+        // alert(res.message)
         console.log(res);
       }
     }

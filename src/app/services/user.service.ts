@@ -16,4 +16,11 @@ export class UserService {
     return this.http.post('/user/modifyUserAvatar', JSON.parse(JSON.stringify(data)))
   }
 
+  checkToken(): Observable<any> {
+    let token: any = localStorage.getItem('token')
+    let t!: string
+    t = token
+    return this.http.get('/user/checkToken', JSON.parse(JSON.stringify(t)))
+  }
+
 }
