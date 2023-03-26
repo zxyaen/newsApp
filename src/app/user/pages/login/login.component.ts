@@ -72,8 +72,9 @@ export class LoginComponent {
       res = await this.login(this.form.value)
       if (res.status === 200) {
         const data: any = res.data
-
+        const token = data.token
         console.log(JSON.stringify(data.session.status));
+        localStorage.setItem('token', JSON.stringify(token))
         localStorage.setItem('session', JSON.stringify(data.session))
         this.router.navigate(['/user/homepage'])
 
