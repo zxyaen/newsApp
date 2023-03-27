@@ -11,6 +11,7 @@ import { UserHomeComponent } from './pages/user-home/user-home.component';
 import { InfoPageComponent } from './pages/info-page/info-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { AuthGuard } from '../guards/auth-guard';
+import { NewsInfoPageComponent } from '../news/pages/news-info-page/news-info-page.component';
 
 const routes: Routes = [
   {
@@ -23,7 +24,9 @@ const routes: Routes = [
     path: '', component: UserHomeComponent,
     children: [
       { path: 'infopage', component: InfoPageComponent, canActivate: [AuthGuard] },
-      { path: 'homepage', component: HomePageComponent, canActivate: [AuthGuard] }
+      { path: 'homepage', component: HomePageComponent, canActivate: [AuthGuard] }, {
+        path: 'newsInfoPage', component: NewsInfoPageComponent
+      }
     ], canActivate: [AuthGuard]
 
   },

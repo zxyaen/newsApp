@@ -8,11 +8,13 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { GetInitialsPipe } from '../pipe/get-initials.pipe';
 import { share } from 'rxjs';
+import { NewsInfoPageComponent } from './pages/news-info-page/news-info-page.component';
 
 @NgModule({
   declarations: [
     PublishContentComponent,
-    NewThingsListComponent
+    NewThingsListComponent,
+    NewsInfoPageComponent
   ],
   imports: [
     CommonModule,

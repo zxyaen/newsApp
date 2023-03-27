@@ -1,5 +1,5 @@
 <ul>
-    <li *ngFor="let item of userNewsArr" class="item-wrap">
+    <li *ngFor="let item of userNewsArr" class="item-wrap" (click)="goNewsInfo(item)">
         <div class="forwarded" *ngIf="forwarded">已转发</div>
         <div class="item-container">
             <div class="avatar">
