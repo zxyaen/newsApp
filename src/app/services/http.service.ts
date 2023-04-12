@@ -28,7 +28,7 @@ export class HttpService {
 
   post(path: string, body: object): Observable<any> {
     const url = `${this.baseUrl}${path}`
-    console.log(this.token);
+    // console.log(this.token);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': this.token

@@ -17,22 +17,17 @@ export class LoginService {
    * @param        {JSON} data  包含account，password
    * @return       {*}
    */
-  Login(data: object) {
+  Login(data: object): any {
     return this.http.post('/user/login', JSON.parse(JSON.stringify(data)))
   }
 
 
-  //ERROR WHY
-  async getUserInfo(username: any) {
-    let res = await lastValueFrom(this.http.get('/user/userInfo', username).pipe())
+  //获取用户信息
+  async getUserInfo() {
+    let res = await lastValueFrom(this.http.get('/user/userInfo').pipe())
     const { USERNAME, ACCOUNT_ADDRESS } = res
     this.username = USERNAME
     this.account= ACCOUNT_ADDRESS
     return res
   }
-
-  // async checkSession(sessionID: string) {
-  //   let res = await lastValueFrom(this.http.get('/user/checkSession', sessionID).pipe())
-  //   return res
-  // }
 }

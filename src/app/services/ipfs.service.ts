@@ -23,14 +23,15 @@ export class IpfsService {
 
   }
 
-  async getUserInfo(username: any) {
-    let res = await lastValueFrom(this.http.get('/user/userInfo', username).pipe())
+  async getUserInfo() {
+    let res = await lastValueFrom(this.http.get('/user/userInfo').pipe())
+    console.log(res);
     const { USERNAME, ACCOUNT_ADDRESS } = res
     this.username = USERNAME
-    this.account= ACCOUNT_ADDRESS
+    this.account = ACCOUNT_ADDRESS
     return res
   }
-  
+
   /**
    * @description : 将发布内容存到IPFS中，再将IPFS返回值与发布内容备份到数据库和智能合约的事件中
    * @param        {string} text 发布内容
@@ -39,7 +40,7 @@ export class IpfsService {
   async addFileToIpfs(text: string) {
     // let session: any = localStorage.getItem('session')
     // session = JSON.parse(session)
-    console.log(this.username,this.account);
+    // console.log(this.username,this.account);
     let data = { text, username: this.username, address: this.account }
     const res = await this.IPFS.add(Buffer.from(JSON.stringify(data)))
     const saveData = { res, data }

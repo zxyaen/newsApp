@@ -16,6 +16,7 @@ export class UserService {
     return this.http.post('/user/modifyUserAvatar', JSON.parse(JSON.stringify(data)))
   }
 
+  //检查token是否有效
   checkToken(): Observable<any> {
     let token: any = localStorage.getItem('token')
     let t!: string

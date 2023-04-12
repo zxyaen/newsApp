@@ -68,11 +68,8 @@ export class HomePageComponent implements OnInit {
 
 
   async ngOnInit() {
-    let session: any = localStorage.getItem('session')
-    this.userService.checkToken().subscribe(res=>{
-      console.log(res);
-    })
-      this.userInfo = await this.loginService.getUserInfo(JSON.parse(session).username)
+    this.userInfo = await this.loginService.getUserInfo()
+    console.log(this.userInfo);
     this.getAllNews()
     this.testAvatar()
     if (this.isPath) {

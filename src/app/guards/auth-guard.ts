@@ -12,23 +12,20 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    let isLoggedIn = localStorage.getItem('session')
-    if (isLoggedIn) {
-      let session = JSON.parse(isLoggedIn)
-      this.userService.checkToken().subscribe(res => {
-        if (res.status == 401) {
-          // 若session无效，则禁止跳转到用户页，并重定向到主页
-          this.router.navigate(['/home']);
-          return false;
-        } if (res.status == 200) {
-          // this.router.navigate(['/user/homepage']);
-          return true
-        } else {
-          this.router.navigate(['/home']);
-          return false
-        }
-      })
-    }
+    this.userService.checkToken().subscribe(res => {
+      console.log(res);
+      if (res.status == 401) {
+        // 若session无效，则禁止跳转到用户页，并重定向到主页
+        this.router.navigate(['/home']);
+        return false;
+      } if (res.status == 200) {
+        // this.router.navigate(['/user/homepage']);
+        return true
+      } else {
+        this.router.navigate(['/home']);
+        return false
+      }
+    })
     return true;
   }
 }

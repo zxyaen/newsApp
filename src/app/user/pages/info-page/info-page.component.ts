@@ -91,8 +91,8 @@ export class InfoPageComponent implements OnInit {
 
 
   async ngOnInit() {
-    let session: any = localStorage.getItem('session')
-    this.userInfo = await this.loginService.getUserInfo(JSON.parse(session).username)
+
+    this.userInfo = await this.loginService.getUserInfo()
     this.testAvatar()
     if (this.isPath) {
       await this.ipfsService.getFileFromIpfs(this.userInfo.AVATAR_COLOR).then(res => {
