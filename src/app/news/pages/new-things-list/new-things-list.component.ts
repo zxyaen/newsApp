@@ -1,5 +1,6 @@
 import { Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { flush } from '@angular/core/testing';
+import { Router } from '@angular/router';
 import { IpfsService } from 'src/app/services/ipfs.service';
 import { UtilsService } from 'src/app/services/utils.service';
 
@@ -17,7 +18,7 @@ interface Users {
   AVATAR_COLOR?: string,
   isPath: Boolean,
   avatarImgBase64: string,
-  IPFS_PATH:string
+  IPFS_PATH: string
 }
 
 @Component({
@@ -33,7 +34,7 @@ export class NewThingsListComponent implements OnInit, OnChanges {
   forwarded: Boolean = false
   //头像是否是ipfs地址
   isPath: Boolean = false
-  constructor(private utilsService: UtilsService, private ipfsService: IpfsService) {
+  constructor(private utilsService: UtilsService, private ipfsService: IpfsService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -61,5 +62,9 @@ export class NewThingsListComponent implements OnInit, OnChanges {
     const regex = /^#/;
     if (regex.test(item.AVATAR_COLOR)) item.isPath = false
     else item.isPath = true
+  }
+  goNewsInfo(news: any) {
+    console.log(['goNewsInfo']);
+    this.router.navigate(['/user/newsInfoPage'], { queryParams: news })
   }
 }

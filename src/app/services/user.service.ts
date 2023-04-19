@@ -9,12 +9,9 @@ export class UserService {
 
   constructor(private http: HttpService) { }
 
-  modifyUserInfo(data: object): Observable<any> {
-    return this.http.post('/user/modifyUserInfo', JSON.parse(JSON.stringify(data)))
-  }
-  modifyUserAvatar(data: object): Observable<any> {
-    return this.http.post('/user/modifyUserAvatar', JSON.parse(JSON.stringify(data)))
-  }
+  // modifyUserInfo(data: object): Observable<any> {
+  //   return this.http.post('/user/modifyUserInfo', JSON.parse(JSON.stringify(data)))
+  // }
 
   //检查token是否有效
   checkToken(): Observable<any> {

@@ -26,6 +26,7 @@ import { NewsInfoComponent } from './pages/news-info/news-info.component';
   exports: [
     PublishContentComponent,
     NewThingsListComponent,
+    NewsInfoComponent
   ]
 })
 export class NewsModule { }

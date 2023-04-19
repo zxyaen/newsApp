@@ -1,8 +1,10 @@
-
-
 /* 设置全局默认样式*/
 body {
     font-size: 12px;
+}
+
+html {
+    overflow: hidden;
 }
 
 p,
@@ -17,11 +19,6 @@ li {
     list-style: none;
     padding: 0;
     margin: 0;
-}
-
-input {
-    // outline: none;
-    // all: unset;
 }
 
 /* 表单中错误提示样式*/

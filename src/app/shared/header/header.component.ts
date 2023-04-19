@@ -15,6 +15,9 @@ export class HeaderComponent {
   @Input() list: item[] = []
 
   constructor(private router: Router) { }
+  clearToken() {
+    localStorage.removeItem('token')
+  }
 
   goPage(url: string | undefined) {
     if (url) {

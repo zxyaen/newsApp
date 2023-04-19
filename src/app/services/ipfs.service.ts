@@ -41,9 +41,9 @@ export class IpfsService {
     // let session: any = localStorage.getItem('session')
     // session = JSON.parse(session)
     // console.log(this.username,this.account);
-    let data = { text, username: this.username, address: this.account }
-    const res = await this.IPFS.add(Buffer.from(JSON.stringify(data)))
-    const saveData = { res, data }
+    const res = await this.IPFS.add(Buffer.from(JSON.stringify(text)))
+    console.log(res);
+    const saveData = { res, text }
     this.saveIpfsFileToContract(saveData).subscribe(res => {
       if (res.err) {
         console.log(res);
