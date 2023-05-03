@@ -48,7 +48,7 @@ export class IpfsService {
       if (res.err) {
         console.log(res);
       }
-      console.log(res);
+      // console.log(res);
     })
     this.saveIpfsFileToDB(saveData).subscribe(res => {
       console.log(res.data);
@@ -95,4 +95,20 @@ export class IpfsService {
       throw error;
     }
   }
+
+  // //取出新闻内容
+  // async getNewsFromIPFS(path: any): Promise<any> {
+  //   try {
+  //     // 从IPFS获取文件数据
+  //     const asyncIterator = this.IPFS.get(path);
+  //     // 使用 for await...of 语句迭代异步迭代器，获取文件数据
+  //     for await (const data of asyncIterator) {
+  //       // 返回文件数据
+  //       return data;
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //     throw error;
+  //   }
+  // }
 }

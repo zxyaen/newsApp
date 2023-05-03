@@ -23,7 +23,7 @@
                 <div class="newThings-img-container" *ngIf="item.PICTURE">
                     <img [src]="item.PICTURE" alt="" class="newThings-img">
                 </div>
-                <div class="ribbon">
+                <div class="ribbon" (click)="stopPropagation($event)">
                     <div class="ribbon-wrap">
                         <span class="icon-wrap blue">
                             <span nz-icon type="message" nzTheme="outline" class="ribbon-icon">

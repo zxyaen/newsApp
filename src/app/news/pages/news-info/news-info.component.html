@@ -1,17 +1,17 @@
-<app-home-content>
+<app-home-content *ngIf="news">
     <div main-top class="title">
         <div nz-icon nzType="arrow-left" nzTheme="outline" class="back"></div>
         <div class="username">推文</div>
     </div>
     <div main-top class="main-content">
-        <div class="user-info-top">
+        <!-- <div class="user-info-top">
             <div class="avatar" *ngIf="isPath">
                 <img [src]="avatarImgBase64" alt="">
             </div>
             <div *ngIf="!isPath" class="avatar tm" [ngStyle]='{"background-color":news.AVATAR_COLOR}'>
                 {{news.USERNAME | getInitials}}
             </div>
-        </div>
+        </div> -->
         <div class="user-info">
             <div class="username">{{news.USERNAME}}</div>
             <div class="account">@{{news.ACCOUNT_ADDRESS}}</div>
@@ -23,13 +23,21 @@
             {{news.CONTENT}}
         </div>
 
-        <div class="check-text" >
+        <div class="check-text">
             <div class="check-text-top">
                 <div> 检测合约中内容</div>
-                <button>检测</button>
+                <button (click)="verifyNews()">检测</button>
             </div>
-            <div>
-                xxxxx
+            <div *ngIf="verifyNewsContent">
+                <div>
+                    <div>数据库中IPFS存储路径</div>
+                    <div>{{news.IPFS_PATH}}</div>
+                    <div>用户账号</div>
+                    <div>{{verifyNewsContent._userAddress}}</div>
+                    <div>区块中IPFS存储路径</div>
+                    <div>{{verifyNewsContent._ipfsHash}}</div>
+                   
+                </div>
             </div>
         </div>
     </div>

@@ -65,6 +65,11 @@ export class NewThingsListComponent implements OnInit, OnChanges {
   }
   goNewsInfo(news: any) {
     console.log(['goNewsInfo']);
-    this.router.navigate(['/user/newsInfoPage'], { queryParams: news })
+    const newsID = news.NEWS_ID
+    this.router.navigate(['/user/newsInfoPage'], { queryParams: { newsID } })
+  }
+
+  stopPropagation(event: MouseEvent) {
+    event.stopPropagation(); // 阻止事件冒泡
   }
 }

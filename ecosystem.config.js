@@ -4,6 +4,10 @@ module.exports = {
     script: 'ng serve',
     watch: true,
     cwd: './src',
+    retain: 2,
+    cwd: './',
+    max_size: '10M',
+    retain: 5,
     ignore_watch: [
       "node_modules",
       "logs"

@@ -20,7 +20,7 @@ export class NewsService {
   constructor(private http: HttpService) { }
   headers = new Headers();
   getFollowUsers() {
-    this.headers.append( 'Authorization', this.token)
+    // this.headers.append( 'Authorization', this.token)
     return this.http.get('/news/getFollowUsers')
   }
 
@@ -28,12 +28,23 @@ export class NewsService {
     return this.http.get('/news/getRecommendUsers')
   }
 
-  getNewsEvent() {
-    return this.http.get('/newsEvent')
-  }
-  getPrivyNews(data:object): Observable<any>{
+  // getNewsEvent() {
+  //   return this.http.get('/newsEvent')
+  // }
+  getPrivyNews(data: object): Observable<any> {
     console.log(data);
-    return this.http.post('/news/getPrivyNews',JSON.parse(JSON.stringify(data)))
+    return this.http.post('/news/getPrivyNews', JSON.parse(JSON.stringify(data)))
+  }
+  getNewsCreateEventByIndex(index: number) {
+    console.log('getNewsCreateEventByIndex');
+    return this.http.post('/news/getNewsEvent', JSON.parse(JSON.stringify({ index })))
   }
 
+  getNewsByNewsID(newsID: number) {
+    return this.http.post('/news/getNewsByNewsID', JSON.parse(JSON.stringify({ newsID })))
+  }
+
+  getIndexIDByPath(path: string) {
+    return this.http.post('/news/getIndexIDByPath', JSON.parse(JSON.stringify({ path })))
+  }
 }
