@@ -35,8 +35,13 @@
     </div>
     <div main-right class="main-right">
         <div class="search">
-            <app-search>
+            <app-search (searchNews)="onSearchNews()">
             </app-search>
+        </div>
+        <div new-things-content>
+            <div class="new-things-list" *ngIf="searchNews">
+                <app-new-things-list [newThingsList]="searchNews" [isSearch]="true"></app-new-things-list>
+            </div>
         </div>
     </div>
 </app-home-content>

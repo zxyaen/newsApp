@@ -9,7 +9,9 @@ import { HttpService } from './http.service';
   providedIn: 'root'
 })
 export class NewsService {
-
+  searchNewsResults: any
+  homeSearchNewsResults: any
+  
   token: any = localStorage.getItem('token')
   httpOptions: any = {
     headers: new HttpHeaders({
@@ -19,18 +21,15 @@ export class NewsService {
   };
   constructor(private http: HttpService) { }
   headers = new Headers();
-  getFollowUsers() {
-    // this.headers.append( 'Authorization', this.token)
-    return this.http.get('/news/getFollowUsers')
+  getAllNews() {
+    return this.http.get('/news/getAllNews')
   }
 
   getRecommendUsers() {
     return this.http.get('/news/getRecommendUsers')
   }
 
-  // getNewsEvent() {
-  //   return this.http.get('/newsEvent')
-  // }
+
   getPrivyNews(data: object): Observable<any> {
     console.log(data);
     return this.http.post('/news/getPrivyNews', JSON.parse(JSON.stringify(data)))
@@ -46,5 +45,9 @@ export class NewsService {
 
   getIndexIDByPath(path: string) {
     return this.http.post('/news/getIndexIDByPath', JSON.parse(JSON.stringify({ path })))
+  }
+
+  searchNews(keyWord: string) {
+    return this.http.post('/news/searchNews', JSON.parse(JSON.stringify({ keyWord })))
   }
 }

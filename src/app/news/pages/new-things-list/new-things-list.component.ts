@@ -29,6 +29,8 @@ interface Users {
 
 export class NewThingsListComponent implements OnInit, OnChanges {
   @Input() newThingsList !: Users[]
+  @Input() isSearch: Boolean = false
+
   userNewsArr: Users[] = []
   //是否有转发
   forwarded: Boolean = false

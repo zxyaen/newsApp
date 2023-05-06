@@ -67,24 +67,6 @@ export class InfoPageComponent implements OnInit {
       location: this.fb.control(''),
       birthday: this.fb.control('')
     })
-    // let isLoggedIn = localStorage.getItem('session')
-    // if (isLoggedIn) {
-    //   let session = JSON.parse(isLoggedIn)
-    //   this.loginService.checkSession(session.status).then(res => {
-    //     console.log(res);
-    //     if (res.status == 400) {
-    //       console.log(res);
-    //       // 若session无效，则禁止跳转到用户页，并重定向到主页
-    //       this.router.navigate(['/home']);
-    //     } if (res.status == 200) {
-    //       return
-    //     } else {
-    //       this.router.navigate(['/home']);
-    //     }
-    //   })
-    // } else {
-    //   this.router.navigate(['/home']);
-    // }
   }
 
 

@@ -28,36 +28,37 @@ import { UserAuthComponent } from './pages/user-auth/user-auth.component';
 import { JsonToObjectPipe } from './pipe/json-to-object.pipe';
 import { PublishContentComponent } from './news/pages/publish-content/publish-content.component';
 import { GetInitialsPipe } from './pipe/get-initials.pipe';
+import { NewsModule } from "./news/news.module";
 // import { HttpInterceptorService } from './services/http-interceptor.service';
 
 registerLocaleData(zh);
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    NotFoundComponent,
-    UserAuthComponent,
-    // PublishContentComponent,
-
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    // UserModule,
-    SharedModule,
-  ],
-  providers: [
-    { provide: NZ_I18N, useValue: zh_CN },  
-    // 依赖注入
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: HttpInterceptorService,
-    //   multi: true,
-    // }
-  ],
-  bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        NotFoundComponent,
+        UserAuthComponent,
+        // PublishContentComponent,
+    ],
+    providers: [
+        { provide: NZ_I18N, useValue: zh_CN },
+        // 依赖注入
+        // {
+        //   provide: HTTP_INTERCEPTORS,
+        //   useClass: HttpInterceptorService,
+        //   multi: true,
+        // }
+    ],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        // UserModule,
+        SharedModule,
+        NewsModule
+    ]
 })
 export class AppModule { }

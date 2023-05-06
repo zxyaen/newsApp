@@ -1,6 +1,6 @@
 <div class="content">
     <div class="search-wrap">
-        <span nz-icon nzType="search" nzTheme="outline" class="search-icon"></span>
-        <input type="text" class="search">
+        <span nz-icon nzType="search" nzTheme="outline" class="search-icon"  (click)="search()"></span>
+        <input type="text" class="search" [(ngModel)]="searchContent">
     </div>
 </div>

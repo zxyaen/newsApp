@@ -4,7 +4,7 @@ import { LoginService } from 'src/app/services/login.service';
 import { NewsService } from 'src/app/services/news.service';
 import { UserService } from 'src/app/services/user.service';
 import { UtilsService } from 'src/app/services/utils.service';
-import { Utils } from 'src/app/utils/utils';
+
 
 interface Users {
   AVATAR: string,
@@ -19,7 +19,8 @@ interface Users {
   AVATAR_COLOR?: string,
   isPath: Boolean,
   avatarImgBase64: string,
-  IPFS_PATH: string
+  IPFS_PATH: string,
+  isSearch: Boolean
 }
 interface User {
   AVATAR: string,
@@ -45,26 +46,8 @@ export class HomePageComponent implements OnInit {
   }
   AVATAR: any
   isPath: Boolean = false
-  constructor(private newsService: NewsService, private ipfsService: IpfsService, private loginService: LoginService, private utilsService: UtilsService, private userService: UserService) {
-    // let isLoggedIn = localStorage.getItem('session')
-    // if (isLoggedIn) {
-    //   let session = JSON.parse(isLoggedIn)
-    //   this.loginService.checkSession(session.status).then(res => {
-    //     console.log(res);
-    //     if (res.status == 400) {
-    //       console.log(res);
-    //       // 若session无效，则禁止跳转到用户页，并重定向到主页
-    //       this.router.navigate(['/home']);
-    //     } if (res.status == 200) {
-    //       return
-    //     } else {
-    //       this.router.navigate(['/home']);
-    //     }
-    //   })
-    // } else {
-    //   this.router.navigate(['/home']);
-    // }
-  }
+  searchNews: Users[] = []
+  constructor(private newsService: NewsService, private ipfsService: IpfsService, private loginService: LoginService, private utilsService: UtilsService, private userService: UserService) { }
 
 
   async ngOnInit() {
@@ -103,11 +86,15 @@ export class HomePageComponent implements OnInit {
 
   //获取推荐列表和我的关注列表新闻
   getAllNews() {
-    this.newsService.getFollowUsers().subscribe(res => {
+    this.newsService.getAllNews().subscribe(res => {
       this.followUsers = res
     })
     this.newsService.getRecommendUsers().subscribe(res => {
       this.recommendUsers = res
     })
+  }
+
+  onSearchNews() {
+    this.searchNews = this.newsService.searchNewsResults
   }
 }

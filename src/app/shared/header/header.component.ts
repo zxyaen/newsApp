@@ -16,6 +16,7 @@ export class HeaderComponent {
 
   constructor(private router: Router) { }
   clearToken() {
+    alert('确定退出登录吗')
     localStorage.removeItem('token')
   }
 

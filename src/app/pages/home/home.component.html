@@ -1,7 +1,14 @@
 <app-layout>
     <app-header header [list]="list"></app-header>
     <app-home-content main>
-        <div main-top class="search"> <app-search></app-search></div>
+        <div main-top class="search">
+            <app-search (searchNews)="onSearchNews()"></app-search>
+        </div>
+        <div new-things-content>
+            <div class="new-things-list">
+                <app-new-things-list [newThingsList]="allNews" [isSearch]="true"></app-new-things-list>
+            </div>
+        </div>
 
         <app-user-auth main-right></app-user-auth>
     </app-home-content>

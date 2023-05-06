@@ -20,10 +20,10 @@
                 <div class="newThings">
                     {{item.CONTENT}}
                 </div>
-                <div class="newThings-img-container" *ngIf="item.PICTURE">
+                <div class="newThings-img-container" *ngIf="item.PICTURE && !isSearch">
                     <img [src]="item.PICTURE" alt="" class="newThings-img">
                 </div>
-                <div class="ribbon" (click)="stopPropagation($event)">
+                <div class="ribbon" (click)="stopPropagation($event)" *ngIf="!isSearch">
                     <div class="ribbon-wrap">
                         <span class="icon-wrap blue">
                             <span nz-icon type="message" nzTheme="outline" class="ribbon-icon">
