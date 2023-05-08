@@ -5,6 +5,10 @@ import { LoginService } from 'src/app/services/login.service';
 import { NewsService } from 'src/app/services/news.service';
 import { UtilsService } from 'src/app/services/utils.service';
 
+interface User {
+  ACCOUNT_ADDRESS: string
+  AVATAR_COLOR: string
+}
 @Component({
   selector: 'app-news-info',
   templateUrl: './news-info.component.html',
@@ -55,11 +59,48 @@ export class NewsInfoComponent implements OnInit {
     console.log('verifyNews');
   }
 
+  //判断新闻是否为当前用户发布
+  isNowUser() {
+    if (this.userInfo.ACCOUNT_ADDRESS === this.news.ACCOUNT_ADDRESS) return true
+    else return false
+  }
+
+  //心跳检测
+  options = ['1min', '1hour', '1day', '10day', 'NA'];
+  selectedOption = 'NA';
+  check() {
+    let time = 60 * 1000
+    switch (this.selectedOption) {
+      case '1min':
+        console.log('Oranges are $0.59 a pound.');
+        break;
+      case '1hour':
+        time = 60 * 60 * 1000
+        console.log('12332');
+        break
+      case '1day':
+        time = 24 * 60 * 60 * 1000
+        console.log('Mangoes and papayas are $2.79 a pound.');
+        break;
+      case '10day':
+        time = 10 * 24 * 60 * 60 * 1000
+        console.log('213');
+        break;
+      case 'NA':
+        time = 0
+        break
+    }
+    this.newsService.heartbeatDetection(time, this.news.NEWS_ID,this.news.IPFS_PATH).subscribe(res => {
+      console.log(res);
+    })
+  }
+
   //检查是默认背景色还是已经更换过头像的IPFS path地址
   testAvatar() {
     const regex = /^#/;
     if (regex.test(this.userInfo.AVATAR_COLOR)) this.isPath = false
     else this.isPath = true
   }
+
 
 }

@@ -7,16 +7,17 @@ import { Observable } from 'rxjs';
 })
 export class HttpService {
   private readonly baseUrl = 'http://localhost:3000';
-  private token = window.localStorage.getItem('token') || ''
+
 
   constructor(private http: HttpClient) { }
   // 使用 localhost 存储用户凭证，在请求头带上
 
   get(path: string, data?: string | null): Observable<any> {
+    let token = window.localStorage.getItem('token') || ''
     const url = `${this.baseUrl}${path}`;
     const headers = new HttpHeaders({
       'responseType': 'json',
-      'Authorization': this.token
+      'Authorization': token
     });
     if (data) {
       const params = new HttpParams().set('param', data);
@@ -28,10 +29,11 @@ export class HttpService {
 
   post(path: string, body: object): Observable<any> {
     const url = `${this.baseUrl}${path}`
+    let token = window.localStorage.getItem('token') || ''
     // console.log(this.token);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': this.token
+      'Authorization': token
     });
     return this.http.post(url, body, { headers })
   }

@@ -23,6 +23,15 @@
             {{news.CONTENT}}
         </div>
 
+        <div *ngIf="isNowUser()" class="auto-check">
+            <div>设置自动检测</div>
+            <div class="dropdown">
+                <select [(ngModel)]="selectedOption"  (change)="check()">
+                    <option *ngFor="let item of options" [value]="item">{{item}}</option>
+                </select>
+            </div>
+        </div>
+
         <div class="check-text">
             <div class="check-text-top">
                 <div> 检测合约中内容</div>
@@ -36,7 +45,7 @@
                     <div>{{verifyNewsContent._userAddress}}</div>
                     <div>区块中IPFS存储路径</div>
                     <div>{{verifyNewsContent._ipfsHash}}</div>
-                   
+
                 </div>
             </div>
         </div>

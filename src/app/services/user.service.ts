@@ -9,13 +9,11 @@ export class UserService {
 
   constructor(private http: HttpService) { }
 
-  // modifyUserInfo(data: object): Observable<any> {
-  //   return this.http.post('/user/modifyUserInfo', JSON.parse(JSON.stringify(data)))
-  // }
 
   //检查token是否有效
   checkToken(): Observable<any> {
     let token: any = localStorage.getItem('token')
+    console.log(token);
     let t!: string
     t = token
     return this.http.get('/user/checkToken', JSON.parse(JSON.stringify(t)))

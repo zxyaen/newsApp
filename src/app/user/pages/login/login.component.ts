@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { lastValueFrom } from 'rxjs';
+import { lastValueFrom, timeout } from 'rxjs';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -76,7 +76,6 @@ export class LoginComponent {
         const token = data.token
         console.log(token);
         localStorage.setItem('token', JSON.stringify(token))
-        // localStorage.setItem('session', JSON.stringify(data.session))
         this.router.navigate(['/user/homepage'])
 
       }

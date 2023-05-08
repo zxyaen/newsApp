@@ -62,6 +62,7 @@
     .user-info {
         width: inherit;
         padding-top: 2rem;
+        padding-left: 2rem;
 
         .username {
             font-size: 1.4rem;
@@ -81,6 +82,11 @@
 .text-content {
     padding: 0 2rem;
     font-size: 1.2rem;
+    .auto-check{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+    }
     .current-text{
         margin-bottom: 4rem;
     }

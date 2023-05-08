@@ -11,7 +11,7 @@ import { HttpService } from './http.service';
 export class NewsService {
   searchNewsResults: any
   homeSearchNewsResults: any
-  
+
   token: any = localStorage.getItem('token')
   httpOptions: any = {
     headers: new HttpHeaders({
@@ -49,5 +49,9 @@ export class NewsService {
 
   searchNews(keyWord: string) {
     return this.http.post('/news/searchNews', JSON.parse(JSON.stringify({ keyWord })))
+  }
+
+  heartbeatDetection(time: number, id: number, path: string) {
+    return this.http.post('/news/heartbeatDetection', JSON.parse(JSON.stringify({ time, id, path })))
   }
 }
