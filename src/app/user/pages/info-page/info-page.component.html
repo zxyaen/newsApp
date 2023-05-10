@@ -24,10 +24,10 @@
             <div class="username">{{userInfo.USERNAME}}</div>
             <div class="account">@{{userInfo.ACCOUNT_ADDRESS}}</div>
             <div class="registration-time">注册时间：{{userInfo.REGISTRATION_TIME | date:'MM月dd日' }}</div>
-            <div class="follow">
+            <!-- <div class="follow">
                 <div class="followers">关注者 {{userInfo.FOLLOWS}}</div>
                 <div class="followed">正在关注 {{userInfo.FANS}}</div>
-            </div>
+            </div> -->
         </div>
     </div>
     <div new-things-content class="new-things-content">
@@ -50,11 +50,11 @@
 
             <app-avatar-upload [avatarColor]="this.userInfo.AVATAR_COLOR" class="avatar"></app-avatar-upload>
 
-            <form [formGroup]="form">
+            <!-- <form [formGroup]="form" class="form">
                 <label for="intro">个人简介</label>
                 <input type="text" formControlName="intro">
 
-            </form>
+            </form> -->
         </div>
 
 

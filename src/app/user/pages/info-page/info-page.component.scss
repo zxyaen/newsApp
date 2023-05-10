@@ -187,16 +187,18 @@
                 position: absolute;
                 width: 35rem;
                 height: 12rem;
-                background-color: pink;
+                background-color: #D1D9DD;
             }
     
             .avatar {
                 position: absolute;
                 top: 9.5rem;
-                left: 1rem;
-            
-
-                
+                left: 1rem;    
+            }
+            .form{
+                position: absolute;
+                top: 18rem;
+                margin-left: 1rem;
             }
         }
 

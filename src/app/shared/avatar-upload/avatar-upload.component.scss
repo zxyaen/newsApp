@@ -4,7 +4,8 @@
   width: 6rem;
   height: 6rem;
 }
-.avatar-wrap{
+
+.avatar-wrap {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,4 +13,18 @@
   height: 6.4rem;
   border-radius: 50%;
   background-color: white;
+}
+
+.container {
+  position: relative;
+
+  input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 6rem;
+    opacity:0;
+    height: 6rem;
+    border-radius: 50%;
+  }
 }
