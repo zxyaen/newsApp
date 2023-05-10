@@ -9,7 +9,7 @@ declare var JSON: any;
   templateUrl: './user-home.component.html',
   styleUrls: ['./user-home.component.scss']
 })
-export class UserHomeComponent {
+export class UserHomeComponent implements OnInit {
   list = [
     {
       icon: 'home',
@@ -20,33 +20,46 @@ export class UserHomeComponent {
       title: '探索'
     }, {
       icon: 'setting',
-      title: '设置'
+      title: '设置',
+      goPage: '/user/settingPage'
+
     }, {
       icon: 'bell',
-      title: '通知'
-    }, {
-      icon: 'mail',
-      title: '私信'
-    }, {
-      icon: 'star',
-      title: '书签'
-    }, {
-      icon: 'profile',
-      title: '列表'
+      title: '通知',
+      isShow: false,
+      goPage: '/user/bellPage'
     }, {
       icon: 'user',
       title: '个人资料',
-      goPage: '/user/infopage'
+      goPage: '/user/infoPage'
     }]
 
   form: FormGroup
 
-  constructor(private fb: FormBuilder, private newsHttp: NewsService) {
+  constructor(private fb: FormBuilder, private newsService: NewsService) {
     this.form = this.fb.group({
       newThings: this.fb.control('')
     })
   }
+  ngOnInit() {
+    this.checkIsDistorted()
+  }
 
+  checkIsDistorted() {
+    return this.newsService.checkIsDistorted().subscribe(
+      res => {
+
+        if (res.length != 0) {
+          this.list.map(item => {
+            if (item.icon == 'bell') {
+              item.isShow = true
+            }
+          })
+        }
+        console.log(res);
+      }
+    )
+  }
 
 
 

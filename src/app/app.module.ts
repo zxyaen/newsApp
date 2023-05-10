@@ -29,6 +29,7 @@ import { JsonToObjectPipe } from './pipe/json-to-object.pipe';
 import { PublishContentComponent } from './news/pages/publish-content/publish-content.component';
 import { GetInitialsPipe } from './pipe/get-initials.pipe';
 import { NewsModule } from "./news/news.module";
+// import { BellComponent } from './user/pages/bell/bell.component';
 // import { HttpInterceptorService } from './services/http-interceptor.service';
 
 registerLocaleData(zh);
@@ -39,6 +40,7 @@ registerLocaleData(zh);
         HomeComponent,
         NotFoundComponent,
         UserAuthComponent,
+        // BellComponent,
         // PublishContentComponent,
     ],
     providers: [

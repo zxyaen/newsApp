@@ -6,7 +6,7 @@
     <div class="ribbon">
         <ul class="icon-wrap">
             <li nz-icon nzType="picture" nzTheme="outline"></li>
-            <li nz-icon nzType="file-gif" nzTheme="outline"></li>
+            <!-- <li nz-icon nzType="file-gif" nzTheme="outline"></li> -->
             <li nz-icon nzType="smile" nzTheme="outline" (click)="showEmoji=true">
                 <emoji-mart title="Pick your emoji…" emoji="point_up" (emojiClick)="addEmoji($event)" *ngIf="showEmoji"
                      class="emoji"></emoji-mart>
@@ -16,7 +16,7 @@
 
             </div> -->
 
-            <li nz-icon nzType="environment" nzTheme="outline" (click)="getLocation()"></li>
+            <!-- <li nz-icon nzType="environment" nzTheme="outline" (click)="getLocation()"></li> -->
         </ul>
         <button class="button" [disabled]="content.length==0" (click)="onSubmit()">发 布</button>
         <!-- <div class="button" (click)="getFile()">开云</div> -->

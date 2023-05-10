@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 interface item {
   icon: string,
   title: string,
-  goPage?: string
+  goPage?: string,
+  isShow?: boolean
 }
 @Component({
   selector: 'app-header',

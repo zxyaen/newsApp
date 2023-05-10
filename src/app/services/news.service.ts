@@ -51,7 +51,11 @@ export class NewsService {
     return this.http.post('/news/searchNews', JSON.parse(JSON.stringify({ keyWord })))
   }
 
-  heartbeatDetection(time: number, id: number, path: string) {
-    return this.http.post('/news/heartbeatDetection', JSON.parse(JSON.stringify({ time, id, path })))
+  heartbeatDetection(time: number, id: number, path: string, curContent: string) {
+    return this.http.post('/news/heartbeatDetection', JSON.parse(JSON.stringify({ time, id, path, curContent })))
+  }
+
+  checkIsDistorted() {
+    return this.http.get('/news/checkIsDistorted')
   }
 }

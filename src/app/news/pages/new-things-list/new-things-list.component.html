@@ -3,7 +3,7 @@
         <div class="forwarded" *ngIf="forwarded">已转发</div>
         <div class="item-container">
             <div class="avatar">
-                <img [src]="item.avatarImgBase64" alt="" class="avatar-img" *ngIf="item.isPath">
+                <img [src]="item.avatarImgBase64" alt="" class="avatar-img" *ngIf="item.isPath && item.avatarImgBase64">
                 <div *ngIf="!item.isPath" class="avatar-img tm" [ngStyle]='{"background-color":item.AVATAR_COLOR}'>
                     {{item.USERNAME | getInitials}}
                 </div>

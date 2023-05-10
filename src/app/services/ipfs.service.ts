@@ -31,6 +31,11 @@ export class IpfsService {
     this.account = ACCOUNT_ADDRESS
     return res
   }
+  async addToIPFS(text: string) {
+    const res = await this.IPFS.add(Buffer.from(JSON.stringify(text)))
+    let curPath = res.path
+    return curPath
+  }
 
   /**
    * @description : 将发布内容存到IPFS中，再将IPFS返回值与发布内容备份到数据库和智能合约的事件中

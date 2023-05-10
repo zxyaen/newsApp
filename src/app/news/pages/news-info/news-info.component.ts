@@ -21,6 +21,7 @@ export class NewsInfoComponent implements OnInit {
   avatarImgBase64!: string
   verifyNewsContent: any
   ipfsContent: any
+  curIPFS: any
   constructor(private route: ActivatedRoute, private newsService: NewsService, private loginService: LoginService, private ipfsService: IpfsService, private utilsService: UtilsService) { }
 
   async ngOnInit() {
@@ -50,13 +51,18 @@ export class NewsInfoComponent implements OnInit {
    * @return       {*}
    */
   verifyNews() {
+    // QmWwAP1vgqo1WyEWot4L8VFK36pC5PooQRUuMxBMyDDdde
     this.newsService.getIndexIDByPath(this.news.IPFS_PATH).subscribe(res => {
       const index_ID = res[0].INDEX_ID
       this.newsService.getNewsCreateEventByIndex(index_ID).subscribe(res => {
         this.verifyNewsContent = res
       })
     })
-    console.log('verifyNews');
+
+    this.ipfsService.addToIPFS(this.news.CONTENT).then(res => {
+      this.curIPFS = res
+    })
+
   }
 
   //判断新闻是否为当前用户发布
@@ -90,8 +96,8 @@ export class NewsInfoComponent implements OnInit {
         time = 0
         break
     }
-    this.newsService.heartbeatDetection(time, this.news.NEWS_ID,this.news.IPFS_PATH).subscribe(res => {
-      console.log(res);
+    this.newsService.heartbeatDetection(time, this.news.NEWS_ID, this.news.IPFS_PATH, this.news.CONTENT).subscribe(res => {
+      
     })
   }
 

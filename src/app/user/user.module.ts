@@ -16,6 +16,8 @@ import { PublishContentComponent } from '../news/pages/publish-content/publish-c
 import { NewsModule } from '../news/news.module';
 import { InfoPageComponent } from './pages/info-page/info-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { BellComponent } from './pages/bell/bell.component';
+import { SettingPageComponent } from './pages/setting-page/setting-page.component';
 
 
 
@@ -26,6 +28,8 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
     UserHomeComponent,
     InfoPageComponent,
     HomePageComponent,
+    BellComponent,
+    SettingPageComponent
     // PublishContentComponent,
 
   ],

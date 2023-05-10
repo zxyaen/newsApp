@@ -26,7 +26,7 @@
         <div *ngIf="isNowUser()" class="auto-check">
             <div>设置自动检测</div>
             <div class="dropdown">
-                <select [(ngModel)]="selectedOption"  (change)="check()">
+                <select [(ngModel)]="selectedOption" (change)="check()">
                     <option *ngFor="let item of options" [value]="item">{{item}}</option>
                 </select>
             </div>
@@ -39,13 +39,18 @@
             </div>
             <div *ngIf="verifyNewsContent">
                 <div>
-                    <div>数据库中IPFS存储路径</div>
-                    <div>{{news.IPFS_PATH}}</div>
+                    <div>当前内容对应IPFS存储路径</div>
+                    <div>{{curIPFS}}</div>
                     <div>用户账号</div>
                     <div>{{verifyNewsContent._userAddress}}</div>
                     <div>区块中IPFS存储路径</div>
                     <div>{{verifyNewsContent._ipfsHash}}</div>
-
+                    <div *ngIf="curIPFS !== verifyNewsContent._ipfsHash">
+                        已被篡改
+                    </div>
+                    <div *ngIf="curIPFS === verifyNewsContent._ipfsHash">
+                        未被篡改
+                    </div>
                 </div>
             </div>
         </div>

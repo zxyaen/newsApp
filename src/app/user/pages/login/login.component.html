@@ -4,8 +4,6 @@
             <span nz-icon nzType="close" nzTheme="outline" [routerLink]="['/home']"></span>
             <div class="title">登陆</div>
         </div>
-        <!-- <div class="content"> -->
-        <!-- <div class="title">登陆</div> -->
         <form [formGroup]="form" (submit)="onSubmit()" class="content">
             <div class="input-wrap">
                 <div class="input-container">
@@ -31,9 +29,7 @@
                     <div  *ngIf="form.get('account')?.errors?.['maxlength']" class="errorTips">
                         最大长度为50
                     </div>
-                    <!-- <div *ngIf="form.get('account')?.hasError('IsExitUsername')" class="errorTips">
-                            用户名已存在
-                        </div> -->
+
                 </div>
             </div>
             <div class="input-wrap">
@@ -64,4 +60,3 @@
         </form>
     </div>
 </div>
-<!-- </div>/ -->
