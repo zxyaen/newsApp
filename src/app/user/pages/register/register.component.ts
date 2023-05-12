@@ -24,9 +24,9 @@ export class RegisterComponent {
   constructor(private registerHttp: RegisterService, private fb: FormBuilder, private utilsService: UtilsService,private router:Router) {
     this.form = this.fb.group({
       // TODO：配置自定义检验，验证用户名是否存在
-      username: this.fb.control('', [Validators.required, Validators.minLength(5), Validators.maxLength(30)], [AuthenticationValidate.isExitUsername(this.registerHttp)]),
+      username: this.fb.control('', [Validators.required, Validators.minLength(2), Validators.maxLength(30)], [AuthenticationValidate.isExitUsername(this.registerHttp)]),
       email: this.fb.control(''),
-      password: this.fb.control('', [Validators.required, Validators.minLength(5), Validators.maxLength(30)]),
+      password: this.fb.control('', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]),
       confirmPassword: this.fb.control('', Validators.required),
     }, {
       validator: AuthenticationValidate.confirmPassword

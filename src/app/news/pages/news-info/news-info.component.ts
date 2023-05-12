@@ -22,6 +22,8 @@ export class NewsInfoComponent implements OnInit {
   verifyNewsContent: any
   ipfsContent: any
   curIPFS: any
+  options = ['1min', '1hour', '1day', '10day', 'NA'];
+  selectedOption: string = 'NA';
   constructor(private route: ActivatedRoute, private newsService: NewsService, private loginService: LoginService, private ipfsService: IpfsService, private utilsService: UtilsService) { }
 
   async ngOnInit() {
@@ -29,6 +31,18 @@ export class NewsInfoComponent implements OnInit {
     this.newsService.getNewsByNewsID(newsID).subscribe(res => {
       this.news = res[0]
       console.log(this.news);
+      console.log(this.news.CHECK_INTERVAL == 60000);
+      if (this.news.CHECK_INTERVAL === 'NA') {
+        this.selectedOption = 'NA'
+      } else if (this.news.CHECK_INTERVAL == 60000) {
+        this.selectedOption = '1min'
+      } else if (this.news.CHECK_INTERVAL == '3600000') {
+        this.selectedOption = '1hour'
+      } else if (this.news.CHECK_INTERVAL == '864000000') {
+        this.selectedOption = '1day'
+      } else if (this.news.CHECK_INTERVAL == '8640000000') {
+        this.selectedOption = '10day'
+      }
     })
 
     this.userInfo = await this.loginService.getUserInfo()
@@ -72,8 +86,7 @@ export class NewsInfoComponent implements OnInit {
   }
 
   //心跳检测
-  options = ['1min', '1hour', '1day', '10day', 'NA'];
-  selectedOption = 'NA';
+
   check() {
     let time = 60 * 1000
     switch (this.selectedOption) {
@@ -97,7 +110,7 @@ export class NewsInfoComponent implements OnInit {
         break
     }
     this.newsService.heartbeatDetection(time, this.news.NEWS_ID, this.news.IPFS_PATH, this.news.CONTENT).subscribe(res => {
-      
+
     })
   }
 
