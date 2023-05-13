@@ -7,7 +7,7 @@ import { UtilsService } from 'src/app/services/utils.service';
 
 
 interface Users {
-  AVATAR: string,
+  IS_VIP: string,
   USERNAME: string,
   RELEASE_TIME: string,
   CONTENT: string,

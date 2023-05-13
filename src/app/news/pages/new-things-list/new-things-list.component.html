@@ -1,6 +1,6 @@
 <ul>
     <li *ngFor="let item of userNewsArr" class="item-wrap" (click)="goNewsInfo(item)">
-        <div class="forwarded" *ngIf="forwarded">已转发</div>
+        <!-- <div class="forwarded" *ngIf="forwarded">已转发</div> -->
         <div class="item-container">
             <div class="avatar">
                 <img [src]="item.avatarImgBase64" alt="" class="avatar-img" *ngIf="item.isPath && item.avatarImgBase64">
@@ -12,6 +12,8 @@
                 <div class="top">
                     <div>
                         <span class="userName">{{item.USERNAME}}</span>
+                        <span nz-icon nzType="cloud" nzTheme="twotone" style="margin-right: 0.2rem;"
+                            *ngIf="item.IS_VIP=='True'"></span>
                         <span>·</span>
                         <span class="date">{{item.RELEASE_TIME | date:'MM月dd日 HH时mm分'}}</span>
                     </div>

@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { IpfsService } from 'src/app/services/ipfs.service';
 import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
-  selector: 'app-publish-content',
-  templateUrl: './publish-content.component.html',
-  styleUrls: ['./publish-content.component.scss']
+  selector: 'app-reply',
+  templateUrl: './reply.component.html',
+  styleUrls: ['./reply.component.scss']
 })
-export class PublishContentComponent implements OnInit {
+export class ReplyComponent {
 
   content: string = ''
   showEmoji: Boolean = false

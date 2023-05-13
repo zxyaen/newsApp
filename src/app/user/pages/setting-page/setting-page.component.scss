@@ -1,0 +1,44 @@
+@import '/src/styles.scss';
+
+.title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding: 0 1rem;
+}
+
+.main-content {
+    margin: 1rem;
+    padding-top: 1rem;
+    font-size: 1rem;
+    border-top: 1px solid $line-grey;
+    height: 100vh;
+    width: inherit;
+    .user-category{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .button {
+        width: 8rem;
+        height: 3rem;
+        padding: 0.5rem;
+        border-radius: 24px;
+        border: none;
+        font-size: 1rem;
+        font-weight: bold;
+        color: white;
+        background-color: #4A99E9;
+        transition: all 0.3s ease;
+
+        &:hover {
+            cursor: pointer;
+            background-color: #428AD2;
+        }
+
+        &:disabled {
+            cursor: auto;
+            background-color: #A4CCF4;
+        }
+    }
+}

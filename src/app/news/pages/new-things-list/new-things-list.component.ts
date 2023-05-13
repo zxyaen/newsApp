@@ -2,11 +2,12 @@ import { Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges } from '@an
 import { flush } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { IpfsService } from 'src/app/services/ipfs.service';
+import { LoginService } from 'src/app/services/login.service';
 import { UtilsService } from 'src/app/services/utils.service';
 
 
 interface Users {
-  AVATAR: string,
+  IS_VIP: string,
   USERNAME: string,
   RELEASE_TIME: string,
   CONTENT: string,
@@ -36,11 +37,16 @@ export class NewThingsListComponent implements OnInit, OnChanges {
   forwarded: Boolean = false
   //头像是否是ipfs地址
   isPath: Boolean = false
-  constructor(private utilsService: UtilsService, private ipfsService: IpfsService, private router: Router) {
+  userInfo: any
+  constructor(private utilsService: UtilsService, private ipfsService: IpfsService, private router: Router, private loginService: LoginService) {
   }
 
   ngOnInit(): void {
-
+    // this.loginService.getUserInfo().then(
+    //   res => {
+    //     this.userInfo = res
+    //   }
+    // )
   }
   ngOnChanges(changes: SimpleChanges): void {
     this.userNewsArr = this.newThingsList

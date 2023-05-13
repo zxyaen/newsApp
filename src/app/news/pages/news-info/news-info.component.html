@@ -14,6 +14,8 @@
         </div> -->
         <div class="user-info">
             <div class="username">{{news.USERNAME}}</div>
+            <span nz-icon nzType="cloud" nzTheme="twotone" style="margin-left: 0.2rem;font-size: 1.2rem;"
+                *ngIf="news.IS_VIP=='True'"></span>
             <div class="account">@{{news.ACCOUNT_ADDRESS}}</div>
         </div>
     </div>

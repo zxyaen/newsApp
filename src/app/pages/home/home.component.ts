@@ -3,7 +3,7 @@ import { IpfsService } from 'src/app/services/ipfs.service';
 import { LoginService } from 'src/app/services/login.service';
 import { NewsService } from 'src/app/services/news.service';
 interface Users {
-  AVATAR: string,
+  IS_VIP: string,
   USERNAME: string,
   RELEASE_TIME: string,
   CONTENT: string,

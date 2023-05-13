@@ -58,4 +58,8 @@ export class NewsService {
   checkIsDistorted() {
     return this.http.get('/news/checkIsDistorted')
   }
+
+  certified() {
+    return this.http.post('/user/certified', JSON.parse(JSON.stringify({})))
+  }
 }

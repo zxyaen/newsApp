@@ -1,1 +1,14 @@
-<p>setting-page works!</p>
+<app-home-content>
+    <span main-top class="title">设置</span>
+    <div main-top class="main-content">
+        <div class="user-category">
+            <div>用户类别</div>
+            <div *ngIf="userInfo.IS_VIP=='False'">普通用户</div>
+            <div *ngIf="userInfo.IS_VIP=='pending'">认证中</div>
+            <div *ngIf="userInfo.IS_VIP=='True'">媒体认证用户</div>
+        </div>
+        <hr>
+        <button (click)="joinMembership()" class="button" *ngIf="userInfo.IS_VIP=='False'">申请认证</button>
+
+    </div>
+</app-home-content>

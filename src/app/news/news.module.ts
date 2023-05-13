@@ -6,8 +6,6 @@ import { NewThingsListComponent } from './pages/new-things-list/new-things-list.
 
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
-import { GetInitialsPipe } from '../pipe/get-initials.pipe';
-import { share } from 'rxjs';
 import { NewsInfoComponent } from './pages/news-info/news-info.component';
 
 @NgModule({

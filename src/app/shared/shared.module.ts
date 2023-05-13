@@ -15,43 +15,46 @@ import { AvatarUploadComponent } from './avatar-upload/avatar-upload.component';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { BackgroundUploadComponent } from './background-upload/background-upload.component';
+import { ReplyComponent } from './reply/reply.component';
+
 
 @NgModule({
-  declarations: [
-    HomeContentComponent,
-    SearchComponent,
-    HeaderComponent,
-    LayoutComponent,
-    JsonToObjectPipe,
-    GetInitialsPipe,
-    CenterBoxComponent,
-    AvatarUploadComponent,
-    BackgroundUploadComponent,
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NzIconModule,
-    NzAvatarModule,
-    NzUploadModule,
-  ],
-  exports: [
-    HomeContentComponent,
-    SearchComponent,
-    HeaderComponent,
-    LayoutComponent,
-    FormsModule,
-    ReactiveFormsModule,
-    NzIconModule,
-    NzAvatarModule,
-    JsonToObjectPipe,
-    GetInitialsPipe,
-    CenterBoxComponent,
-    AvatarUploadComponent,
-    BackgroundUploadComponent,
-  ],
-  providers: [NzMessageService]
+    declarations: [
+        HomeContentComponent,
+        SearchComponent,
+        HeaderComponent,
+        LayoutComponent,
+        JsonToObjectPipe,
+        GetInitialsPipe,
+        CenterBoxComponent,
+        AvatarUploadComponent,
+        BackgroundUploadComponent,
+        ReplyComponent,
+    ],
+    exports: [
+        HomeContentComponent,
+        SearchComponent,
+        HeaderComponent,
+        LayoutComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        NzIconModule,
+        NzAvatarModule,
+        JsonToObjectPipe,
+        GetInitialsPipe,
+        CenterBoxComponent,
+        AvatarUploadComponent,
+        BackgroundUploadComponent,
+    ],
+    providers: [NzMessageService],
+    imports: [
+        CommonModule,
+        RouterModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NzIconModule,
+        NzAvatarModule,
+        NzUploadModule,
+    ]
 })
 export class SharedModule { }

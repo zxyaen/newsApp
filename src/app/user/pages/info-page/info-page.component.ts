@@ -7,7 +7,7 @@ import { NewsService } from 'src/app/services/news.service';
 import { UserService } from 'src/app/services/user.service';
 import { UtilsService } from 'src/app/services/utils.service';
 interface User {
-  AVATAR: string
+  IS_VIP: string
   USERNAME: string
   ACCOUNT_ADDRESS: string,
   AVATAR_COLOR: string,
@@ -32,7 +32,7 @@ interface User {
 })
 export class InfoPageComponent implements OnInit {
   userInfo: User = {
-    AVATAR: '',
+    IS_VIP: '',
     USERNAME: '',
     ACCOUNT_ADDRESS: '',
     AVATAR_COLOR: '',
