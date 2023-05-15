@@ -31,7 +31,6 @@ export class NewsService {
 
 
   getPrivyNews(data: object): Observable<any> {
-    console.log(data);
     return this.http.post('/news/getPrivyNews', JSON.parse(JSON.stringify(data)))
   }
   getNewsCreateEventByIndex(index: number) {
@@ -48,6 +47,7 @@ export class NewsService {
   }
 
   searchNews(keyWord: string) {
+    console.log(keyWord);
     return this.http.post('/news/searchNews', JSON.parse(JSON.stringify({ keyWord })))
   }
 
@@ -61,5 +61,9 @@ export class NewsService {
 
   certified() {
     return this.http.post('/user/certified', JSON.parse(JSON.stringify({})))
+  }
+
+  getCommentList(NEWS_ID: number) {
+    return this.http.post('/news/getCommentList', JSON.parse(JSON.stringify({ NEWS_ID })))
   }
 }

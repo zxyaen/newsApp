@@ -1,6 +1,6 @@
 <ul>
     <li *ngFor="let item of userNewsArr" class="item-wrap" (click)="goNewsInfo(item)">
-        <!-- <div class="forwarded" *ngIf="forwarded">已转发</div> -->
+        <div class="forwarded" *ngIf="item.NID !== -1">回复{{item.R_USERNAME}}</div>
         <div class="item-container">
             <div class="avatar">
                 <img [src]="item.avatarImgBase64" alt="" class="avatar-img" *ngIf="item.isPath && item.avatarImgBase64">
@@ -28,7 +28,8 @@
                 <div class="ribbon" (click)="stopPropagation($event)" *ngIf="!isSearch">
                     <div class="ribbon-wrap">
                         <span class="icon-wrap blue">
-                            <span nz-icon type="message" nzTheme="outline" class="ribbon-icon">
+                            <span nz-icon type="message" nzTheme="outline" class="ribbon-icon"
+                                (click)="onClick(true,item)">
                             </span>
                         </span>
                         <span>{{item.comments | jsonToObject}}</span>
@@ -65,3 +66,19 @@
         </div>
     </li>
 </ul>
+
+<div class="wrap" #wrap>
+    <app-center-box>
+        <div top>
+            <div (click)="onClick(false)">
+                <span nz-icon nzType="close" nzTheme="outline" class="close"></span>
+            </div>
+            <div class="title">回复</div>
+        </div>
+        <div main>
+            <app-publish-content #publishContent></app-publish-content>
+        </div>
+
+
+    </app-center-box>
+</div>

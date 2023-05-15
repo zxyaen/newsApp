@@ -1,17 +1,17 @@
 <app-home-content *ngIf="news">
     <div main-top class="title">
-        <div nz-icon nzType="arrow-left" nzTheme="outline" class="back"></div>
+        <!-- <div nz-icon nzType="arrow-left" nzTheme="outline" class="back"></div> -->
         <div class="username">推文</div>
     </div>
     <div main-top class="main-content">
-        <!-- <div class="user-info-top">
+        <div class="user-info-top">
             <div class="avatar" *ngIf="isPath">
                 <img [src]="avatarImgBase64" alt="">
             </div>
             <div *ngIf="!isPath" class="avatar tm" [ngStyle]='{"background-color":news.AVATAR_COLOR}'>
                 {{news.USERNAME | getInitials}}
             </div>
-        </div> -->
+        </div>
         <div class="user-info">
             <div class="username">{{news.USERNAME}}</div>
             <span nz-icon nzType="cloud" nzTheme="twotone" style="margin-left: 0.2rem;font-size: 1.2rem;"
@@ -19,10 +19,13 @@
             <div class="account">@{{news.ACCOUNT_ADDRESS}}</div>
         </div>
     </div>
+
     <div new-things-content class="text-content">
         <div class="current-text">
             <span>当前内容：</span>
             {{news.CONTENT}}
+        <app-new-things-list [newThingsList]="commentList" [isSearch]="true" [fNews]="this.news.USERNAME"></app-new-things-list>
+
         </div>
 
         <div *ngIf="isNowUser()" class="auto-check">

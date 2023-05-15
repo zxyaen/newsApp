@@ -1,4 +1,4 @@
-import { Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges, ViewChild, ElementRef } from '@angular/core';
 import { flush } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { IpfsService } from 'src/app/services/ipfs.service';
@@ -19,7 +19,9 @@ interface Users {
   AVATAR_COLOR?: string,
   isPath: Boolean,
   avatarImgBase64: string,
-  IPFS_PATH: string
+  IPFS_PATH: string,
+  NID?: number,
+  R_USERNAME?: string
 }
 
 @Component({
@@ -31,6 +33,9 @@ interface Users {
 export class NewThingsListComponent implements OnInit, OnChanges {
   @Input() newThingsList !: Users[]
   @Input() isSearch: Boolean = false
+  @Input() fNews?: string
+  @ViewChild('wrap') wrap!: ElementRef;
+  @ViewChild('publishContent') publishContentComponent!: any;
 
   userNewsArr: Users[] = []
   //是否有转发
@@ -38,15 +43,12 @@ export class NewThingsListComponent implements OnInit, OnChanges {
   //头像是否是ipfs地址
   isPath: Boolean = false
   userInfo: any
-  constructor(private utilsService: UtilsService, private ipfsService: IpfsService, private router: Router, private loginService: LoginService) {
+  isEdit: Boolean = false
+  constructor(private utilsService: UtilsService, private ipfsService: IpfsService, private router: Router) {
   }
 
   ngOnInit(): void {
-    // this.loginService.getUserInfo().then(
-    //   res => {
-    //     this.userInfo = res
-    //   }
-    // )
+
   }
   ngOnChanges(changes: SimpleChanges): void {
     this.userNewsArr = this.newThingsList
@@ -64,6 +66,16 @@ export class NewThingsListComponent implements OnInit, OnChanges {
     console.log(this.userNewsArr);
   }
 
+  //点击评论按钮
+  onClick(isShow: Boolean, item?: any,) {
+    if (isShow) {
+      this.wrap.nativeElement.style.visibility = 'unset'
+    } else {
+      this.wrap.nativeElement.style.visibility = 'hidden'
+
+    }
+    this.publishContentComponent['NID'] = item.NEWS_ID
+  }
 
   //检查是默认背景色还是已经更换过头像的IPFS path地址
   testAvatar(item: any) {

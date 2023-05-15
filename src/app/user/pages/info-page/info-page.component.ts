@@ -52,7 +52,7 @@ export class InfoPageComponent implements OnInit {
   birthday: any = null
   location: any = null
 
-  backgroundImg: string | undefined 
+  backgroundImg: string | undefined
   avatarImgBase64: any = null
   isEdit: Boolean = false
   isPath: Boolean = false
@@ -94,12 +94,22 @@ export class InfoPageComponent implements OnInit {
     else this.isPath = true
   }
 
+  //个人所有新闻
   getPrivyNews() {
     this.newsService.getPrivyNews({ username: this.userInfo.USERNAME }).subscribe(res => {
-      for(let item of res[1]){
-        Object.assign(item,res[0][0])
+
+      for (let i = 0; i < res[1].length; i++) {
+        for (let j = 0; j < res[2].length; j++) {
+          if (res[1][i]['IPFS_PATH'] == res[2][j]['IPFS_PATH']) {
+            res[1][i] = res[2][j]
+          }
+        }
       }
-      this.myNews= res[1]
+      for (let item of res[1]) {
+        Object.assign(item, res[0][0])
+      }
+
+      this.myNews = res[1]
     })
   }
 

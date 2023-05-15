@@ -5,9 +5,21 @@ import { LoginService } from 'src/app/services/login.service';
 import { NewsService } from 'src/app/services/news.service';
 import { UtilsService } from 'src/app/services/utils.service';
 
-interface User {
-  ACCOUNT_ADDRESS: string
-  AVATAR_COLOR: string
+interface Users {
+  IS_VIP: string,
+  USERNAME: string,
+  RELEASE_TIME: string,
+  CONTENT: string,
+  PICTURE?: string,
+  comments?: string,
+  forward?: string,
+  likes?: string,
+  hot?: number,
+  AVATAR_COLOR?: string,
+  isPath: Boolean,
+  avatarImgBase64: string,
+  IPFS_PATH: string,
+  NID:number
 }
 @Component({
   selector: 'app-news-info',
@@ -24,9 +36,11 @@ export class NewsInfoComponent implements OnInit {
   curIPFS: any
   options = ['1min', '1hour', '1day', '10day', 'NA'];
   selectedOption: string = 'NA';
+  commentList: Users[] = []
   constructor(private route: ActivatedRoute, private newsService: NewsService, private loginService: LoginService, private ipfsService: IpfsService, private utilsService: UtilsService) { }
 
   async ngOnInit() {
+    //处理心跳检测显示
     const newsID: number = this.route.snapshot.queryParams['newsID']
     this.newsService.getNewsByNewsID(newsID).subscribe(res => {
       this.news = res[0]
@@ -44,10 +58,15 @@ export class NewsInfoComponent implements OnInit {
         this.selectedOption = '10day'
       }
     })
+    //处理评论列表新闻
+    this.newsService.getCommentList(newsID).subscribe(res => {
+      this.commentList = res
+      console.log(res);
+    })
 
+    //处理头像
     this.userInfo = await this.loginService.getUserInfo()
     this.testAvatar()
-    // console.log(this.isPath);
     //如果是图片形式头像，获取头像图片
     if (this.isPath) {
       await this.ipfsService.getFileFromIpfs(this.userInfo.AVATAR_COLOR).then(res => {

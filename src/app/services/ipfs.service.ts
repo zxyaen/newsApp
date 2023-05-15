@@ -42,18 +42,15 @@ export class IpfsService {
    * @param        {string} text 发布内容
    * @return       {*}  返回数据在IPFS上存储的路径
    */
-  async addFileToIpfs(text: string) {
-    // let session: any = localStorage.getItem('session')
-    // session = JSON.parse(session)
-    // console.log(this.username,this.account);
+  async addFileToIpfs(text: string, NID: number = -1) {
     const res = await this.IPFS.add(Buffer.from(JSON.stringify(text)))
     console.log(res);
-    const saveData = { res, text }
+    const saveData = { res, text, NID }
     this.saveIpfsFileToContract(saveData).subscribe(res => {
       if (res.err) {
         console.log(res);
       }
-      // console.log(res);
+
     })
     this.saveIpfsFileToDB(saveData).subscribe(res => {
       console.log(res.data);

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { IpfsService } from 'src/app/services/ipfs.service';
 import { UtilsService } from 'src/app/services/utils.service';
@@ -9,7 +9,7 @@ import { UtilsService } from 'src/app/services/utils.service';
   styleUrls: ['./publish-content.component.scss']
 })
 export class PublishContentComponent implements OnInit {
-
+  NID: number = -1
   content: string = ''
   showEmoji: Boolean = false
   latitude: any
@@ -18,6 +18,7 @@ export class PublishContentComponent implements OnInit {
 
   }
   ngOnInit(): void {
+    console.log(this.NID);
   }
 
   addEmoji(e: { emoji: any; }) {
@@ -28,7 +29,8 @@ export class PublishContentComponent implements OnInit {
     this.utilsService.getLocation('202.100.100.0')
   }
   onSubmit() {
-    this.ipfsService.addFileToIpfs(this.content)
+    console.log(this.NID);
+    this.ipfsService.addFileToIpfs(this.content, this.NID)
     setTimeout(() => {
       window.location.reload()
     }, 2000)
