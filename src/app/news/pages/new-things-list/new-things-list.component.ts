@@ -63,7 +63,6 @@ export class NewThingsListComponent implements OnInit, OnChanges {
         })
       }
     }
-    console.log(this.userNewsArr);
   }
 
   //点击评论按钮

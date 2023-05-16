@@ -85,9 +85,12 @@
     padding: 0 2rem;
     font-size: 1.2rem;
     .auto-check{
-        display: flex;
-        justify-content: space-between;
         margin-bottom: 2rem;
+        .flex-sb{
+            margin: 1rem 0;
+            display: flex;
+            justify-content: space-between;
+        }
     }
     .current-text{
         margin-bottom: 4rem;

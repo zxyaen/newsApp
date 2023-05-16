@@ -24,16 +24,27 @@
         <div class="current-text">
             <span>当前内容：</span>
             {{news.CONTENT}}
-        <app-new-things-list [newThingsList]="commentList" [isSearch]="true" [fNews]="this.news.USERNAME"></app-new-things-list>
+            <app-new-things-list [newThingsList]="commentList" [isSearch]="true"
+                [fNews]="this.news.USERNAME"></app-new-things-list>
 
         </div>
 
         <div *ngIf="isNowUser()" class="auto-check">
-            <div>设置自动检测</div>
-            <div class="dropdown">
-                <select [(ngModel)]="selectedOption" (change)="check()">
-                    <option *ngFor="let item of options" [value]="item">{{item}}</option>
-                </select>
+            <div class="flex-sb">
+                <div>设置心跳检测</div>
+                <div class="dropdown">
+                    <select [(ngModel)]="selectedOption" (change)="check()"  #select>
+                        <option *ngFor="let item of options" [value]="item">{{item}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="flex-sb">
+                <div>当前心跳检测间隔为</div>
+                <div>{{selectedOption}}</div>
+            </div>
+            <div class="flex-sb">
+                <div>免费检测次数剩余</div>
+                <div>{{userInfo.CHECK_NUMBER}}</div>
             </div>
         </div>
 

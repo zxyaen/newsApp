@@ -51,8 +51,8 @@ export class NewsService {
     return this.http.post('/news/searchNews', JSON.parse(JSON.stringify({ keyWord })))
   }
 
-  heartbeatDetection(time: number, id: number, path: string, curContent: string) {
-    return this.http.post('/news/heartbeatDetection', JSON.parse(JSON.stringify({ time, id, path, curContent })))
+  heartbeatDetection(time: number, id: number, path: string, curContent: string, checkNumber: number) {
+    return this.http.post('/news/heartbeatDetection', JSON.parse(JSON.stringify({ time, id, path, curContent, checkNumber })))
   }
 
   checkIsDistorted() {
@@ -65,5 +65,9 @@ export class NewsService {
 
   getCommentList(NEWS_ID: number) {
     return this.http.post('/news/getCommentList', JSON.parse(JSON.stringify({ NEWS_ID })))
+  }
+
+  curCheckNumber() {
+    return this.http.post('/news/curCheckNumber', JSON.parse(JSON.stringify({})))
   }
 }

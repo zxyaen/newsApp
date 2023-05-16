@@ -13,7 +13,6 @@ export class UserService {
   //检查token是否有效
   checkToken(): Observable<any> {
     let token: any = localStorage.getItem('token')
-    console.log(token);
     let t!: string
     t = token
     return this.http.get('/user/checkToken', JSON.parse(JSON.stringify(t)))
